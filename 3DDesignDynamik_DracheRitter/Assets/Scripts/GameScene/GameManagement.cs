@@ -16,6 +16,9 @@ public class GameManagement : MonoBehaviour
 			Debug.Log ("Started game with " + character);
 		}
 
+		// TODO:
+		// load scripts for character-controlling depending on loaded character
+		// e.g. Dragon was choosen -> load scripts for pc-controlled Knight and player-controlled Dragon
 	}
 	
 	// Update is called once per frame
