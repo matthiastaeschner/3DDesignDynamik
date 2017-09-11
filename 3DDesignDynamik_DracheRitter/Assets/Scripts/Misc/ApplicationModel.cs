@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class for comprehensive data-exchange (scene to scene, etc.)
 public class ApplicationModel : MonoBehaviour {
 
 	public enum PlayerCharacter 

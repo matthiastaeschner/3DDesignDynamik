@@ -17,7 +17,7 @@ public class GameManagement : MonoBehaviour
 		}
 
 		// TODO:
-		// load scripts for character-controlling depending on loaded character
+		// add controll-scripts to characers depending on loaded character
 		// e.g. Dragon was choosen -> load scripts for pc-controlled Knight and player-controlled Dragon
 	}
 	
@@ -37,6 +37,9 @@ public class GameManagement : MonoBehaviour
 
 	public void SwitchToStartScene ()
 	{
+		if (Debug.isDebugBuild) {
+			Debug.Log ("SwitchToStartScene");
+		}
 		SceneManager.LoadScene ("Start");
 	}
 }
