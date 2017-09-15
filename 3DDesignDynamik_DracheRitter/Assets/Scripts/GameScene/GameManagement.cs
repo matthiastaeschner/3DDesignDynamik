@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour
 {
-
 	private ApplicationModel.PlayerCharacter character;
+
+	public GameObject knightSword;
+	public GameObject knightBow;
+	public GameObject dragon;
 
 	// Use this for initialization
 	void Start ()
@@ -19,6 +22,13 @@ public class GameManagement : MonoBehaviour
 		// TODO:
 		// add controll-scripts to characers depending on loaded character
 		// e.g. Dragon was choosen -> load scripts for pc-controlled Knight and player-controlled Dragon
+		if (character == ApplicationModel.PlayerCharacter.Knight) {
+			knightSword.AddComponent<PlayerControlledKnight> ();
+			// dragon.AddComponent<ComputerControlledDragon> ();
+		} else {
+			// dragon.AddComponent<PlayerControlledDragon> ();
+			knightSword.AddComponent<ComputerControlledKnight> ();
+		}
 	}
 	
 	// Update is called once per frame
