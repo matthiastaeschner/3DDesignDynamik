@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ComputerControlledKnight : MonoBehaviour {
+public class ComputerControlledKnightSword : MonoBehaviour {
 
 	private Animator anim;
 
