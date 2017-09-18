@@ -11,7 +11,6 @@ public class ComputerControlledKnight : MonoBehaviour {
 		if (Debug.isDebugBuild) {
 			Debug.Log ("ComputerControlledKnight-Script attached to " + gameObject.name);
 		}
-
 		anim = gameObject.GetComponent<Animator> ();
 
 		anim.Play ("Knight_Stand_Sword");
