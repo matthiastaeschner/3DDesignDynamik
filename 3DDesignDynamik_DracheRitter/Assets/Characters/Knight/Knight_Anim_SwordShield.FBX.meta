@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 58eb0f453693711489ae54a240be5acc
-timeCreated: 1505217996
+timeCreated: 1505477814
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -255,14 +255,36 @@ ModelImporter:
     4300054: Trouser
     4300056: Boot_Left
     4300058: Boot_Right
-    7400000: Knight_Anim_Sword_All
-    7400002: Knight_Stand_Sword
-    7400004: Knight_Run_Sword
-    7400006: Knight_Hit_Sword
-    7400008: Knight_ShieldCover_In
-    7400010: Knight_ShieldCover_Out
-    7400012: Knight_ChangeWeapon_ToBow_Part1
-    7400014: Knight_ChangeWeapon_ToSword_Part2
+    6400000: Arrow001
+    6400002: Arrow002
+    6400004: Arrow003
+    6400006: Arrow004
+    6400008: Arrow005
+    6400010: Arrow006
+    6400012: Arrow007
+    6400014: Arrow008
+    6400016: Arrow009
+    6400018: ArrowBow
+    6400020: BeardMesh_MeshPart0
+    6400022: BeardMesh_MeshPart1
+    6400024: BeardMesh_MeshPart2
+    6400026: BeardMesh_MeshPart3
+    6400028: BeardMesh_MeshPart4
+    6400030: BeardMesh_MeshPart5
+    6400032: BeardMesh_MeshPart6
+    6400034: Bracer_Left
+    6400036: Bracer_Right
+    6400038: Helmet
+    6400040: Quiver
+    6400042: Shield
+    6400044: Sword
+    7400000: Knight_Stand_Sword
+    7400002: Knight_Run_Sword
+    7400004: Knight_Hit_Sword
+    7400006: Knight_ShieldCover_In
+    7400008: Knight_ShieldCover_Out
+    7400010: Knight_ChangeWeapon_ToBow_Part1
+    7400012: Knight_ChangeWeapon_ToSword_Part2
     9500000: //RootNode
     13700000: Body
     13700002: Boot_Left
@@ -295,298 +317,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Knight_Anim_Sword_All
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 121
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Body
-        weight: 1
-      - path: Boot_Left
-        weight: 1
-      - path: Boot_Right
-        weight: 1
-      - path: Shirt
-        weight: 1
-      - path: Skeleton
-        weight: 1
-      - path: Skeleton/Bip001 Footsteps
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf/Bip001
-          L Foot
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf/Bip001
-          L Foot/Bip001 L Toe0
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 L Thigh/Bip001 L Calf/Bip001
-          L Foot/Bip001 L Toe0/Bip001 L Toe0Nub
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf/Bip001
-          R Foot
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf/Bip001
-          R Foot/Bip001 R Toe0
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 R Thigh/Bip001 R Calf/Bip001
-          R Foot/Bip001 R Toe0/Bip001 R Toe0Nub
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/BeardMesh
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/BeardMesh/BeardMesh_MeshPart0
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/BeardMesh/BeardMesh_MeshPart1
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/BeardMesh/BeardMesh_MeshPart2
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/BeardMesh/BeardMesh_MeshPart3
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/BeardMesh/BeardMesh_MeshPart4
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/BeardMesh/BeardMesh_MeshPart5
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/BeardMesh/BeardMesh_MeshPart6
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/Bip001 HeadNub
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 Head/Helmet
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001
-          L Hand
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001
-          L Hand/Bip001 L Finger0
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001
-          L Hand/Bip001 L Finger0/Bip001 L Finger01
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001
-          L Hand/Bip001 L Finger0/Bip001 L Finger01/Bip001 L Finger0Nub
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001
-          L Hand/Bip001 L Finger1
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001
-          L Hand/Bip001 L Finger1/Bip001 L Finger11
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bip001
-          L Hand/Bip001 L Finger1/Bip001 L Finger11/Bip001 L Finger1Nub
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Bracer_Left
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 L Clavicle/Bip001 L UpperArm/Bip001 L Forearm/Shield
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001
-          R Hand
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001
-          R Hand/Bip001 R Finger0
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001
-          R Hand/Bip001 R Finger0/Bip001 R Finger01
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001
-          R Hand/Bip001 R Finger0/Bip001 R Finger01/Bip001 R Finger0Nub
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001
-          R Hand/Bip001 R Finger1
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001
-          R Hand/Bip001 R Finger1/Bip001 R Finger11
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001
-          R Hand/Bip001 R Finger1/Bip001 R Finger11/Bip001 R Finger1Nub
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bip001
-          R Hand/Sword
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bip001 Neck/Bip001 R Clavicle/Bip001 R UpperArm/Bip001 R Forearm/Bracer_Right
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001/Bone002
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001/Bone002/Bone003
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001/Bone002/Bone003/Bone004
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001/Bone002/Bone003/Bone004/Bone005
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001/Bone002/Bone003/Bone004/Bone005/Bone006
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001/Bone002/Bone003/Bone004/Bone005/Bone006/Bone007
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001/Bone002/Bone003/Bone004/Bone005/Bone006/Bone007/Bone008
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001(gespiegelt)
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001(gespiegelt)/Bone002(gespiegelt)
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001(gespiegelt)/Bone002(gespiegelt)/Bone003(gespiegelt)
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001(gespiegelt)/Bone002(gespiegelt)/Bone003(gespiegelt)/Bone004(gespiegelt)
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bone001(gespiegelt)/Bone002(gespiegelt)/Bone003(gespiegelt)/Bone004(gespiegelt)/Bone005(gespiegelt)
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/Bow
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Bow-Ctrl/BowStringTube
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowBow
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow001
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow002
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow003
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow004
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow005
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow006
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow007
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow008
-        weight: 1
-      - path: Skeleton/Bip001 Pelvis/Bip001 Spine/Bip001 Spine1/Bip001 Spine2/Bip001
-          Spine3/Quiver/ArrowQuiver/Arrow009
-        weight: 1
-      - path: Trouser
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: Knight_Stand_Sword
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 1
+      firstFrame: 124
+      lastFrame: 125
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1449,8 +1183,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Knight_ShieldCover_In
       takeName: Take 001
-      firstFrame: 78
-      lastFrame: 83
+      firstFrame: 77
+      lastFrame: 87
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1737,8 +1471,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Knight_ShieldCover_Out
       takeName: Take 001
-      firstFrame: 93
-      lastFrame: 98
+      firstFrame: 87
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2603,7 +2337,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
