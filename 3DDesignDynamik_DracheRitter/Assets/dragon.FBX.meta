@@ -1,0 +1,640 @@
+fileFormatVersion: 2
+guid: c9fc1be6ea46fd441a830231e0a32649
+timeCreated: 1505774221
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Bip01
+    100002: Bip01 Footsteps
+    100004: Bip01 Head
+    100006: Bip01 HeadNub
+    100008: Bip01 L Calf
+    100010: Bip01 L Clavicle
+    100012: Bip01 L Foot
+    100014: Bip01 L Forearm
+    100016: Bip01 L Hand
+    100018: Bip01 L HorseLink
+    100020: Bip01 L Thigh
+    100022: Bip01 L Toe0
+    100024: Bip01 L Toe01
+    100026: Bip01 L Toe0Nub
+    100028: Bip01 L Toe1
+    100030: Bip01 L Toe11
+    100032: Bip01 L Toe1Nub
+    100034: Bip01 L UpperArm
+    100036: Bip01 Neck
+    100038: Bip01 Neck1
+    100040: Bip01 Neck2
+    100042: Bip01 Neck3
+    100044: Bip01 Neck4
+    100046: Bip01 Neck5
+    100048: Bip01 Pelvis
+    100050: Bip01 Ponytail1
+    100052: Bip01 Ponytail11
+    100054: Bip01 Ponytail1Nub
+    100056: Bip01 Ponytail2
+    100058: Bip01 Ponytail21
+    100060: Bip01 Ponytail22
+    100062: Bip01 Ponytail2Nub
+    100064: Bip01 R Calf
+    100066: Bip01 R Clavicle
+    100068: Bip01 R Foot
+    100070: Bip01 R Forearm
+    100072: Bip01 R Hand
+    100074: Bip01 R HorseLink
+    100076: Bip01 R Thigh
+    100078: Bip01 R Toe0
+    100080: Bip01 R Toe01
+    100082: Bip01 R Toe0Nub
+    100084: Bip01 R Toe1
+    100086: Bip01 R Toe11
+    100088: Bip01 R Toe1Nub
+    100090: Bip01 R UpperArm
+    100092: Bip01 Spine
+    100094: Bip01 Spine1
+    100096: Bip01 Spine2
+    100098: Bip01 Spine3
+    100100: Bip01 Tail
+    100102: Bip01 Tail1
+    100104: Bip01 Tail2
+    100106: Bip01 Tail3
+    100108: Bip01 Tail4
+    100110: Bip01 Tail5
+    100112: Bip01 Tail6
+    100114: Bip01 Tail7
+    100116: Bip01 Tail8
+    100118: Bip01 Tail9
+    100120: Bip01 TailNub
+    100122: Bip01 Wing1
+    100124: Bip01 Wing102
+    100126: Bip01 Wing103
+    100128: Bip01 Wing104
+    100130: Bip01 Wing105
+    100132: Bip01 Wing106
+    100134: Bip01 Wing1Nub
+    100136: Bip01 Wing2
+    100138: Bip01 Wing202
+    100140: Bip01 Wing203
+    100142: Bip01 Wing204
+    100144: Bip01 Wing205
+    100146: Bip01 Wing206
+    100148: Bip01 Wing2Nub
+    100150: Dragon
+    100152: //RootNode
+    100154: teeth01
+    100156: teeth015
+    100158: teeth016
+    100160: teeth017
+    100162: teeth018
+    100164: teeth019
+    100166: teeth02
+    100168: teeth020
+    100170: teeth021
+    100172: teeth022
+    100174: teeth023
+    100176: teeth024
+    100178: teeth025
+    100180: teeth026
+    100182: teeth027
+    100184: teeth028
+    100186: teeth029
+    100188: teeth03
+    100190: teeth030
+    100192: teeth031
+    100194: teeth032
+    100196: teeth033
+    100198: teeth034
+    100200: teeth035
+    100202: teeth036
+    100204: teeth037
+    100206: teeth038
+    100208: teeth039
+    100210: teeth04
+    100212: teeth040
+    100214: teeth041
+    100216: teeth042
+    100218: teeth043
+    100220: teeth044
+    100222: teeth045
+    100224: teeth046
+    100226: teeth047
+    100228: teeth048
+    100230: teeth049
+    100232: teeth05
+    100234: teeth050
+    100236: teeth051
+    100238: teeth052
+    100240: teeth053
+    100242: teeth054
+    100244: teeth055
+    100246: teeth056
+    100248: teeth057
+    100250: teeth058
+    100252: teeth059
+    100254: teeth06
+    100256: teeth060
+    100258: teeth061
+    100260: teeth062
+    100262: teeth063
+    100264: teeth064
+    100266: teeth065
+    100268: teeth066
+    100270: teeth067
+    100272: teeth068
+    100274: teeth069
+    100276: teeth07
+    100278: teeth070
+    100280: teeth071
+    100282: teeth072
+    100284: teeth073
+    100286: teeth074
+    100288: teeth075
+    100290: teeth076
+    100292: teeth077
+    100294: teeth078
+    100296: teeth079
+    100298: teeth08
+    100300: teeth080
+    100302: teeth081
+    100304: teeth082
+    100306: teeth083
+    100308: teeth084
+    100310: teeth085
+    100312: teeth086
+    100314: teeth087
+    100316: teeth088
+    100318: teeth089
+    100320: teeth09
+    100322: teeth090
+    100324: teeth091
+    100326: teeth092
+    100328: teeth093
+    100330: teeth094
+    100332: teeth095
+    100334: teeth096
+    100336: teeth097
+    100338: teeth098
+    100340: teeth099
+    100342: teeth10
+    100344: teeth11
+    100346: teeth12
+    100348: teeth13
+    100350: teeth14
+    100352: teeth_bottom
+    100354: teeth_top
+    400000: Bip01
+    400002: Bip01 Footsteps
+    400004: Bip01 Head
+    400006: Bip01 HeadNub
+    400008: Bip01 L Calf
+    400010: Bip01 L Clavicle
+    400012: Bip01 L Foot
+    400014: Bip01 L Forearm
+    400016: Bip01 L Hand
+    400018: Bip01 L HorseLink
+    400020: Bip01 L Thigh
+    400022: Bip01 L Toe0
+    400024: Bip01 L Toe01
+    400026: Bip01 L Toe0Nub
+    400028: Bip01 L Toe1
+    400030: Bip01 L Toe11
+    400032: Bip01 L Toe1Nub
+    400034: Bip01 L UpperArm
+    400036: Bip01 Neck
+    400038: Bip01 Neck1
+    400040: Bip01 Neck2
+    400042: Bip01 Neck3
+    400044: Bip01 Neck4
+    400046: Bip01 Neck5
+    400048: Bip01 Pelvis
+    400050: Bip01 Ponytail1
+    400052: Bip01 Ponytail11
+    400054: Bip01 Ponytail1Nub
+    400056: Bip01 Ponytail2
+    400058: Bip01 Ponytail21
+    400060: Bip01 Ponytail22
+    400062: Bip01 Ponytail2Nub
+    400064: Bip01 R Calf
+    400066: Bip01 R Clavicle
+    400068: Bip01 R Foot
+    400070: Bip01 R Forearm
+    400072: Bip01 R Hand
+    400074: Bip01 R HorseLink
+    400076: Bip01 R Thigh
+    400078: Bip01 R Toe0
+    400080: Bip01 R Toe01
+    400082: Bip01 R Toe0Nub
+    400084: Bip01 R Toe1
+    400086: Bip01 R Toe11
+    400088: Bip01 R Toe1Nub
+    400090: Bip01 R UpperArm
+    400092: Bip01 Spine
+    400094: Bip01 Spine1
+    400096: Bip01 Spine2
+    400098: Bip01 Spine3
+    400100: Bip01 Tail
+    400102: Bip01 Tail1
+    400104: Bip01 Tail2
+    400106: Bip01 Tail3
+    400108: Bip01 Tail4
+    400110: Bip01 Tail5
+    400112: Bip01 Tail6
+    400114: Bip01 Tail7
+    400116: Bip01 Tail8
+    400118: Bip01 Tail9
+    400120: Bip01 TailNub
+    400122: Bip01 Wing1
+    400124: Bip01 Wing102
+    400126: Bip01 Wing103
+    400128: Bip01 Wing104
+    400130: Bip01 Wing105
+    400132: Bip01 Wing106
+    400134: Bip01 Wing1Nub
+    400136: Bip01 Wing2
+    400138: Bip01 Wing202
+    400140: Bip01 Wing203
+    400142: Bip01 Wing204
+    400144: Bip01 Wing205
+    400146: Bip01 Wing206
+    400148: Bip01 Wing2Nub
+    400150: Dragon
+    400152: //RootNode
+    400154: teeth01
+    400156: teeth015
+    400158: teeth016
+    400160: teeth017
+    400162: teeth018
+    400164: teeth019
+    400166: teeth02
+    400168: teeth020
+    400170: teeth021
+    400172: teeth022
+    400174: teeth023
+    400176: teeth024
+    400178: teeth025
+    400180: teeth026
+    400182: teeth027
+    400184: teeth028
+    400186: teeth029
+    400188: teeth03
+    400190: teeth030
+    400192: teeth031
+    400194: teeth032
+    400196: teeth033
+    400198: teeth034
+    400200: teeth035
+    400202: teeth036
+    400204: teeth037
+    400206: teeth038
+    400208: teeth039
+    400210: teeth04
+    400212: teeth040
+    400214: teeth041
+    400216: teeth042
+    400218: teeth043
+    400220: teeth044
+    400222: teeth045
+    400224: teeth046
+    400226: teeth047
+    400228: teeth048
+    400230: teeth049
+    400232: teeth05
+    400234: teeth050
+    400236: teeth051
+    400238: teeth052
+    400240: teeth053
+    400242: teeth054
+    400244: teeth055
+    400246: teeth056
+    400248: teeth057
+    400250: teeth058
+    400252: teeth059
+    400254: teeth06
+    400256: teeth060
+    400258: teeth061
+    400260: teeth062
+    400262: teeth063
+    400264: teeth064
+    400266: teeth065
+    400268: teeth066
+    400270: teeth067
+    400272: teeth068
+    400274: teeth069
+    400276: teeth07
+    400278: teeth070
+    400280: teeth071
+    400282: teeth072
+    400284: teeth073
+    400286: teeth074
+    400288: teeth075
+    400290: teeth076
+    400292: teeth077
+    400294: teeth078
+    400296: teeth079
+    400298: teeth08
+    400300: teeth080
+    400302: teeth081
+    400304: teeth082
+    400306: teeth083
+    400308: teeth084
+    400310: teeth085
+    400312: teeth086
+    400314: teeth087
+    400316: teeth088
+    400318: teeth089
+    400320: teeth09
+    400322: teeth090
+    400324: teeth091
+    400326: teeth092
+    400328: teeth093
+    400330: teeth094
+    400332: teeth095
+    400334: teeth096
+    400336: teeth097
+    400338: teeth098
+    400340: teeth099
+    400342: teeth10
+    400344: teeth11
+    400346: teeth12
+    400348: teeth13
+    400350: teeth14
+    400352: teeth_bottom
+    400354: teeth_top
+    4300000: Dragon
+    4300002: teeth01
+    4300004: teeth02
+    4300006: teeth03
+    4300008: teeth04
+    4300010: teeth05
+    4300012: teeth06
+    4300014: teeth07
+    4300016: teeth08
+    4300018: teeth09
+    4300020: teeth10
+    4300022: teeth11
+    4300024: teeth12
+    4300026: teeth13
+    4300028: teeth14
+    4300030: teeth015
+    4300032: teeth016
+    4300034: teeth017
+    4300036: teeth018
+    4300038: teeth019
+    4300040: teeth020
+    4300042: teeth021
+    4300044: teeth022
+    4300046: teeth023
+    4300048: teeth024
+    4300050: teeth025
+    4300052: teeth026
+    4300054: teeth027
+    4300056: teeth028
+    4300058: teeth029
+    4300060: teeth030
+    4300062: teeth031
+    4300064: teeth032
+    4300066: teeth033
+    4300068: teeth034
+    4300070: teeth035
+    4300072: teeth036
+    4300074: teeth037
+    4300076: teeth038
+    4300078: teeth039
+    4300080: teeth040
+    4300082: teeth041
+    4300084: teeth042
+    4300086: teeth043
+    4300088: teeth044
+    4300090: teeth045
+    4300092: teeth046
+    4300094: teeth047
+    4300096: teeth048
+    4300098: teeth049
+    4300100: teeth050
+    4300102: teeth051
+    4300104: teeth052
+    4300106: teeth053
+    4300108: teeth054
+    4300110: teeth055
+    4300112: teeth056
+    4300114: teeth057
+    4300116: teeth058
+    4300118: teeth059
+    4300120: teeth060
+    4300122: teeth061
+    4300124: teeth062
+    4300126: teeth063
+    4300128: teeth064
+    4300130: teeth065
+    4300132: teeth066
+    4300134: teeth067
+    4300136: teeth068
+    4300138: teeth069
+    4300140: teeth070
+    4300142: teeth071
+    4300144: teeth072
+    4300146: teeth073
+    4300148: teeth074
+    4300150: teeth075
+    4300152: teeth076
+    4300154: teeth077
+    4300156: teeth078
+    4300158: teeth079
+    4300160: teeth080
+    4300162: teeth081
+    4300164: teeth082
+    4300166: teeth083
+    4300168: teeth084
+    4300170: teeth085
+    4300172: teeth086
+    4300174: teeth087
+    4300176: teeth088
+    4300178: teeth089
+    4300180: teeth090
+    4300182: teeth091
+    4300184: teeth092
+    4300186: teeth093
+    4300188: teeth094
+    4300190: teeth095
+    4300192: teeth096
+    4300194: teeth097
+    4300196: teeth098
+    4300198: teeth099
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Dragon
+    13700002: teeth01
+    13700004: teeth015
+    13700006: teeth016
+    13700008: teeth017
+    13700010: teeth018
+    13700012: teeth019
+    13700014: teeth02
+    13700016: teeth020
+    13700018: teeth021
+    13700020: teeth022
+    13700022: teeth023
+    13700024: teeth024
+    13700026: teeth025
+    13700028: teeth026
+    13700030: teeth027
+    13700032: teeth028
+    13700034: teeth029
+    13700036: teeth03
+    13700038: teeth030
+    13700040: teeth031
+    13700042: teeth032
+    13700044: teeth033
+    13700046: teeth034
+    13700048: teeth035
+    13700050: teeth036
+    13700052: teeth037
+    13700054: teeth038
+    13700056: teeth039
+    13700058: teeth04
+    13700060: teeth040
+    13700062: teeth041
+    13700064: teeth042
+    13700066: teeth043
+    13700068: teeth044
+    13700070: teeth045
+    13700072: teeth046
+    13700074: teeth047
+    13700076: teeth048
+    13700078: teeth049
+    13700080: teeth05
+    13700082: teeth050
+    13700084: teeth051
+    13700086: teeth052
+    13700088: teeth053
+    13700090: teeth054
+    13700092: teeth055
+    13700094: teeth056
+    13700096: teeth057
+    13700098: teeth058
+    13700100: teeth059
+    13700102: teeth06
+    13700104: teeth060
+    13700106: teeth061
+    13700108: teeth062
+    13700110: teeth063
+    13700112: teeth064
+    13700114: teeth065
+    13700116: teeth066
+    13700118: teeth067
+    13700120: teeth068
+    13700122: teeth069
+    13700124: teeth07
+    13700126: teeth070
+    13700128: teeth071
+    13700130: teeth072
+    13700132: teeth073
+    13700134: teeth074
+    13700136: teeth075
+    13700138: teeth076
+    13700140: teeth077
+    13700142: teeth078
+    13700144: teeth079
+    13700146: teeth08
+    13700148: teeth080
+    13700150: teeth081
+    13700152: teeth082
+    13700154: teeth083
+    13700156: teeth084
+    13700158: teeth085
+    13700160: teeth086
+    13700162: teeth087
+    13700164: teeth088
+    13700166: teeth089
+    13700168: teeth09
+    13700170: teeth090
+    13700172: teeth091
+    13700174: teeth092
+    13700176: teeth093
+    13700178: teeth094
+    13700180: teeth095
+    13700182: teeth096
+    13700184: teeth097
+    13700186: teeth098
+    13700188: teeth099
+    13700190: teeth10
+    13700192: teeth11
+    13700194: teeth12
+    13700196: teeth13
+    13700198: teeth14
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
