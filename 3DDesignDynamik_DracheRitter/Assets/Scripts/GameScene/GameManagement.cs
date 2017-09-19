@@ -23,6 +23,9 @@ public class GameManagement : MonoBehaviour
 	public GameObject dragon;
 	public GameObject dragonCameraHelper;
 
+	// GUI
+	public GameObject endButton;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -61,14 +64,15 @@ public class GameManagement : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update ()
-	{
-		// playing with knight
+	{		
 		if (character == ApplicationModel.PlayerCharacter.Knight) {
+			// playing with knight
 			// change knights weapon
-			if (Input.GetKeyDown ("left shift")) {
+			if (Input.GetButtonDown ("Fire3")) {
 				if (knightWeapon == KnightWeaponMode.Sword) {
 					knightWeapon = KnightWeaponMode.Bow;
 					knightSword.GetComponent<Animator> ().Play ("Knight_ChangeWeapon_ToBow_Part1");
+					// switch knight assets
 					knightCurrentPosition = knightSword.transform.position;
 					knightCurrentRotation = knightSword.transform.rotation;
 					knightSword.SetActive (false);
@@ -83,6 +87,7 @@ public class GameManagement : MonoBehaviour
 				} else {				
 					knightWeapon = KnightWeaponMode.Sword;
 					knightBow.GetComponent<Animator> ().Play ("Knight_ChangeWeapon_ToSword_Part1");
+					// switch knight assets
 					knightCurrentPosition = knightBow.transform.position;
 					knightCurrentRotation = knightBow.transform.rotation;
 					knightBow.SetActive (false);
@@ -95,6 +100,20 @@ public class GameManagement : MonoBehaviour
 					knightCameraHelper.transform.position = knightSword.transform.position;
 					knightCameraHelper.transform.rotation = knightSword.transform.rotation;
 				}
+			}
+
+		} else if (character == ApplicationModel.PlayerCharacter.Dragon) {
+			// playing with dragon
+
+		} 
+
+		// for both players
+		// show or hide End-Button when hitting Escape
+		if (Input.GetButtonDown ("Cancel")) {
+			if (endButton.activeInHierarchy) {
+				endButton.SetActive (false);
+			} else {
+				endButton.SetActive (true);
 			}
 		}
 	}
