@@ -16,9 +16,9 @@ public class PlayerControlledKnightBow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (Debug.isDebugBuild) {
-			Debug.Log ("PlayerControlledKnightBow-Script attached to " + gameObject.name);
-		}
+//		if (Debug.isDebugBuild) {
+//			Debug.Log ("PlayerControlledKnightBow-Script attached to " + gameObject.name);
+//		}
 
 		gameManager = GameObject.Find ("GameController").GetComponent<GameManagement> ();
 		anim = gameObject.GetComponent<Animator> ();
@@ -47,6 +47,5 @@ public class PlayerControlledKnightBow : MonoBehaviour {
 			Input.GetKeyUp ("left") || Input.GetKeyUp ("right")) {
 			anim.Play ("Knight_Stand_Bow");
 		}
-
 	}
 }

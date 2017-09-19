@@ -16,9 +16,9 @@ public class PlayerControlledKnightSword : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (Debug.isDebugBuild) {
-			Debug.Log ("PlayerControlledKnightSword-Script attached to " + gameObject.name);
-		}
+//		if (Debug.isDebugBuild) {
+//			Debug.Log ("PlayerControlledKnightSword-Script attached to " + gameObject.name);
+//		}
 
 		gameManager = GameObject.Find ("GameController").GetComponent<GameManagement> ();
 		anim = gameObject.GetComponent<Animator> ();
