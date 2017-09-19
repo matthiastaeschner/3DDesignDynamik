@@ -9,10 +9,10 @@ public class PlayerControlledKnightSword : MonoBehaviour {
 	private Animator anim;
 	private CharacterController charControl;
 
-	private float knightsRunningSpeed = 10.0f;
+	private float knightsRunningSpeed = 20.0f;
 	private float knightsJumpingSpeed = 20.0f;
 	private float knightsGravity = 50.0f;
-	private float knightsRotationSpeed = 50.0f;
+	private float knightsRotationSpeed = 60.0f;
 	private Vector3 moveDirection = Vector3.zero;
 	private Vector3 rotation = Vector3.zero;
 
