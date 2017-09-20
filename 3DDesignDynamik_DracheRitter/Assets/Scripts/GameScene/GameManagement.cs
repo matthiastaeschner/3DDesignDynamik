@@ -10,11 +10,13 @@ public class GameManagement : MonoBehaviour
 	public GameObject knightSword;
 	public GameObject knightBow;
 	public GameObject knightCameraHelper;
-	public enum KnightWeaponMode 
+
+	public enum KnightWeaponMode
 	{
 		Sword,
 		Bow
 	}
+
 	private KnightWeaponMode knightWeapon;
 	private Vector3 knightCurrentPosition;
 	private Quaternion knightCurrentRotation;
@@ -42,9 +44,11 @@ public class GameManagement : MonoBehaviour
 			knightCameraHelper.transform.parent = knightSword.transform;
 			knightCameraHelper.transform.position = knightSword.transform.position;
 			knightCameraHelper.transform.rotation = knightSword.transform.rotation;
-			// add character-scripts
+			// add character-scripts and define the oponent player
 			knightSword.AddComponent<PlayerControlledKnightSword> ();
+			knightSword.GetComponent<PlayerControlledKnightSword> ().OpponentPlayer = dragon;
 			knightBow.AddComponent<PlayerControlledKnightBow> ();
+			knightBow.GetComponent<PlayerControlledKnightBow> ().OpponentPlayer = dragon;
 			dragon.AddComponent<ComputerControlledDragon> ();
 		} else {
 			// add cameras
@@ -53,9 +57,10 @@ public class GameManagement : MonoBehaviour
 			dragonCameraHelper.transform.parent = dragon.transform;
 			dragonCameraHelper.transform.position = dragon.transform.position;
 			dragonCameraHelper.transform.rotation = dragon.transform.rotation;
-			// add character-scripts
+			// add character-scripts and define the oponent player
 			dragon.AddComponent<PlayerControlledDragon> ();
 			knightSword.AddComponent<ComputerControlledKnightSword> ();
+			knightSword.GetComponent<ComputerControlledKnightSword> ().OpponentPlayer = dragon;
 		}
 		// knight always starts standing with sword
 		knightWeapon = KnightWeaponMode.Sword;

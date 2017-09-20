@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControlledKnightBow : MonoBehaviour {
-
-	private GameManagement gameManager;
-
+public class PlayerControlledKnightBow : MonoBehaviour
+{
 	private Animator anim;
 	private CharacterController charControl;
 
@@ -15,23 +13,36 @@ public class PlayerControlledKnightBow : MonoBehaviour {
 	private float knightsRotationSpeed = 60.0f;
 	private Vector3 moveDirection = Vector3.zero;
 	private Vector3 rotation = Vector3.zero;
+	private float arrowSpeed = 70.0f;
+
+	private GameObject opponentPlayer;
+
+	public GameObject OpponentPlayer {
+		get {
+			return opponentPlayer;
+		}
+		set {
+			opponentPlayer = value;
+		}
+	}
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 //		if (Debug.isDebugBuild) {
 //			Debug.Log ("PlayerControlledKnightBow-Script attached to " + gameObject.name);
 //		}
 
-		gameManager = GameObject.Find ("GameController").GetComponent<GameManagement> ();
 		anim = gameObject.GetComponent<Animator> ();
 		charControl = gameObject.GetComponent<CharacterController> ();
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		// move to direction / jump
 		if (charControl.isGrounded) {
-			moveDirection = new Vector3 (Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
 			moveDirection = transform.TransformDirection (moveDirection);
 			moveDirection *= knightsRunningSpeed;
 			if (Input.GetButton ("Jump")) {
@@ -49,8 +60,8 @@ public class PlayerControlledKnightBow : MonoBehaviour {
 			anim.Play ("Knight_Stand_Bow");
 		}
 		// rotate with mouse x-axis
-		rotation = new Vector3(0, Input.GetAxis("Mouse X"),0) * Time.deltaTime * knightsRotationSpeed;
-		gameObject.transform.Rotate(rotation);
+		rotation = new Vector3 (0, Input.GetAxis ("Mouse X"), 0) * Time.deltaTime * knightsRotationSpeed;
+		gameObject.transform.Rotate (rotation);
 
 		// load bow by holding left mouse
 		if (Input.GetButton ("Fire1")) {
@@ -59,6 +70,17 @@ public class PlayerControlledKnightBow : MonoBehaviour {
 		// shoot bow by let left mouse up
 		if (Input.GetButtonUp ("Fire1")) {
 			anim.Play ("Knight_ShootBow");
+			// create an instance from the arrow-prefab in resources-folder
+			GameObject arrowClone = (GameObject)Instantiate (Resources.Load ("Prefabs/Arrow", typeof(GameObject)));
+			// add collision-detection to arrow and tell who is oponent
+			arrowClone.AddComponent<ArrowHit> ().OpponentPlayer = opponentPlayer;
+			// set arrows startpoint in front of bow and in knights looking direction
+			Vector3 arrowStartPos = gameObject.transform.position + new Vector3 (0f, 6f) + gameObject.transform.forward * 4f;
+			arrowClone.transform.position = arrowStartPos;
+			arrowClone.transform.rotation = gameObject.transform.rotation;
+			// adjust arrows rotation to fly a little upwards
+			arrowClone.transform.rotation *= Quaternion.AngleAxis (-5f, arrowClone.transform.right);
+			arrowClone.GetComponent<Rigidbody> ().velocity = arrowClone.transform.forward * arrowSpeed;
 		}
 	}
 }
