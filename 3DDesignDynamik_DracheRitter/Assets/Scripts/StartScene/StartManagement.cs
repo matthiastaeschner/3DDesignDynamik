@@ -21,4 +21,9 @@ public class StartManagement : MonoBehaviour
 	{
 		SceneManager.LoadScene ("Game");
 	}
+
+	public void SwitchToInfoScene ()
+	{
+		SceneManager.LoadScene ("Info");
+	}
 }
