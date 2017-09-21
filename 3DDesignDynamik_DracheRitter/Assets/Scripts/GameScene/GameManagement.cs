@@ -38,12 +38,9 @@ public class GameManagement : MonoBehaviour
 
 		// add character-scripts and camera-objects depending on loaded player-character
 		if (character == ApplicationModel.PlayerCharacter.Knight) {
-			// add cameras
+			// switch cameras
 			dragonCameraHelper.SetActive (false);
 			knightCameraHelper.SetActive (true);
-			knightCameraHelper.transform.parent = knightSword.transform;
-			knightCameraHelper.transform.position = knightSword.transform.position;
-			knightCameraHelper.transform.rotation = knightSword.transform.rotation;
 			// add character-scripts and define the oponent player
 			knightSword.AddComponent<PlayerControlledKnightSword> ();
 			knightSword.GetComponent<PlayerControlledKnightSword> ().OpponentPlayer = dragon;
@@ -51,12 +48,9 @@ public class GameManagement : MonoBehaviour
 			knightBow.GetComponent<PlayerControlledKnightBow> ().OpponentPlayer = dragon;
 			dragon.AddComponent<ComputerControlledDragon> ();
 		} else {
-			// add cameras
+			// switch cameras
 			dragonCameraHelper.SetActive (true);
 			knightCameraHelper.SetActive (false);
-			dragonCameraHelper.transform.parent = dragon.transform;
-			dragonCameraHelper.transform.position = dragon.transform.position;
-			dragonCameraHelper.transform.rotation = dragon.transform.rotation;
 			// add character-scripts and define the oponent player
 			dragon.AddComponent<PlayerControlledDragon> ();
 			knightSword.AddComponent<ComputerControlledKnightSword> ();
