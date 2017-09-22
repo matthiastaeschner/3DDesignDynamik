@@ -22,14 +22,19 @@ public class GameManagement : MonoBehaviour
 	private Quaternion knightCurrentRotation;
 
 	// dragon
-	public GameObject dragon;
+	private GameObject dragon;
 	public GameObject dragonCameraHelper;
 
 	// GUI
 	public GameObject endButton;
 
-	// Use this for initialization
-	void Start ()
+    private void Awake()
+    {
+        dragon = GameObject.FindGameObjectWithTag("Dragon");
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
 		character = ApplicationModel.character;
 		if (Debug.isDebugBuild) {
