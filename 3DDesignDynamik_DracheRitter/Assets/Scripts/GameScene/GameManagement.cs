@@ -12,6 +12,9 @@ public class GameManagement : MonoBehaviour
 	public GameObject knightBow;
 	public GameObject knightCameraHelper;
 
+    public GameObject fire;
+    public ParticleSystem fireEffect;
+
 	public enum KnightWeaponMode
 	{
 		Sword,
@@ -42,7 +45,7 @@ public class GameManagement : MonoBehaviour
 		if (Debug.isDebugBuild) {
 			Debug.Log ("Started game with " + character);
 		}
-
+        
 		// add character-scripts and camera-objects depending on loaded player-character
 		if (character == ApplicationModel.PlayerCharacter.Knight) {
 			// switch cameras
@@ -64,6 +67,7 @@ public class GameManagement : MonoBehaviour
 			knightCameraHelper.SetActive (false);
 			// add character-scripts and define the oponent player
 			dragon.AddComponent<PlayerControlledDragon> ();
+            
 			// dragon.GetComponent<PlayerControlledDragon> ().OpponentPlayer = knightSword;
 			knightSword.AddComponent<ComputerControlledKnightSword> ();
 			knightSword.GetComponent<ComputerControlledKnightSword> ().OpponentPlayer = dragon;

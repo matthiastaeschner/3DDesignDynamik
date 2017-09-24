@@ -5,22 +5,14 @@
 /// </summary>
 public class SpecialEffectsHelper : MonoBehaviour
 {
-    /// <summary>
-    /// Singleton
-    /// </summary>
-    public static SpecialEffectsHelper Instance;
 
     public ParticleSystem fireEffect;
+    private GameObject dragon;
 
-    void Awake()
+    private void Start()
     {
-        // Register the singleton
-        if (Instance != null)
-        {
-            Debug.LogError("Multiple instances of SpecialEffectsHelper!");
-        }
-
-        Instance = this;
+        dragon = GameObject.FindGameObjectWithTag("Dragon");
+        
     }
 
     /// <summary>
@@ -34,6 +26,15 @@ public class SpecialEffectsHelper : MonoBehaviour
 
         // Fire in the sky
         instantiate(fireEffect, position);
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("FIRE!!");
+            Explosion(dragon.transform.position);
+        }
     }
 
     /// <summary>

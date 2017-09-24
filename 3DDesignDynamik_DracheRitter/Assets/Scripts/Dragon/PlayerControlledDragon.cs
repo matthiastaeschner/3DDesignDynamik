@@ -8,6 +8,8 @@ public class PlayerControlledDragon : MonoBehaviour {
     private GameManagement gameManager;
     private Animator dragonAnimator;
     private CharacterController dragonController;
+    private GameObject fireEffect;
+    private GameObject fireEmitter;
 
     public float dragonGravity = 50.0f;
     public float dragonJumpSpeed = 20.0f;
@@ -20,11 +22,8 @@ public class PlayerControlledDragon : MonoBehaviour {
         dragonController = gameObject.GetComponent<CharacterController>();
         moveDirection.y = -dragonJumpSpeed;
         dragonController.Move(moveDirection * Time.deltaTime);
-    }
-	
-    void Fire()
-    {
-        SpecialEffectsHelper.Instance.Explosion(gameObject.transform.position);
+        fireEmitter = GameObject.FindGameObjectWithTag("Fire");
+        
     }
 
 	// Update is called once per frame
@@ -44,11 +43,18 @@ public class PlayerControlledDragon : MonoBehaviour {
             dragonController.Move(moveDirection * Time.deltaTime); 
         }
 
-        if (Input.GetMouseButtonDown(0))
+        Fire();
+
+    }
+
+    private void Fire()
+    {
+        if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Mouse Button down!");
-            Fire();
+            fireEffect = (GameObject) Instantiate(Resources.Load("Prefabs/FirePrefab")) as GameObject;
+            fireEffect.transform.position = fireEmitter.transform.position;
         }
+        
     }
 
     private void moveFlyingDragon()
@@ -84,14 +90,14 @@ public class PlayerControlledDragon : MonoBehaviour {
 
         moveDirection = transform.TransformDirection(moveDirection);
         dragonController.Move(moveDirection * Time.deltaTime);
-        Debug.Log("Dragon is Flying!");
+        
     }
 
     private void moveGroundedDragon()
     {
         float dragonRunningSpeed = 10.0f;
         dragonAnimator.SetBool("isFlying", false);
-        Debug.Log("Dragon is Grounded!");
+        
 
         if (Input.GetButton("Jump"))
         {
