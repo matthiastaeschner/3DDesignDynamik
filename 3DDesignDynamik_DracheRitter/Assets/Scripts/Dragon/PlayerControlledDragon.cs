@@ -9,8 +9,6 @@ public class PlayerControlledDragon : MonoBehaviour {
     private Animator dragonAnimator;
     private CharacterController dragonController;
 
-    public ParticleSystem fire;
-
     public float dragonGravity = 50.0f;
     public float dragonJumpSpeed = 20.0f;
     private Vector3 moveDirection = Vector3.zero;
@@ -22,31 +20,11 @@ public class PlayerControlledDragon : MonoBehaviour {
         dragonController = gameObject.GetComponent<CharacterController>();
         moveDirection.y = -dragonJumpSpeed;
         dragonController.Move(moveDirection * Time.deltaTime);
-
-        // A simple particle material with no texture.
-        Material particleMaterial = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
-
-        // Create a green particle system.
-        var go = new GameObject("Particle System");
-        go.transform.Rotate(-90, 0, 0); // Rotate so the system emits upwards.
-        fire = go.AddComponent<ParticleSystem>();
-        go.GetComponent<ParticleSystemRenderer>().material = particleMaterial;
-        var mainModule = fire.main;
-        mainModule.startColor = Color.green;
-        mainModule.startSize = 0.5f;
-
-        InvokeRepeating("Fire", 2.0f, 2.0f);
     }
 	
     void Fire()
     {
-        // Any parameters we assign in emitParams will override the current system's when we call Emit.
-        // Here we will override the start color and size.
-        var emitParams = new ParticleSystem.EmitParams();
-        emitParams.startColor = Color.red;
-        emitParams.startSize = 0.2f;
-        fire.Emit(emitParams, 10);
-        fire.Play(); // Continue normal emissions
+        SpecialEffectsHelper.Instance.Explosion(gameObject.transform.position);
     }
 
 	// Update is called once per frame
@@ -65,6 +43,12 @@ public class PlayerControlledDragon : MonoBehaviour {
             moveDirection.y = -dragonJumpSpeed;
             dragonController.Move(moveDirection * Time.deltaTime); 
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Mouse Button down!");
+            Fire();
+        }
     }
 
     private void moveFlyingDragon()
@@ -76,56 +60,38 @@ public class PlayerControlledDragon : MonoBehaviour {
 
         float RotationSpeed = 50;
 
-        float dragonRunningSpeed = 50f;
+        float dragonRunningSpeed = 0.50f;
 
-        roll = Input.GetAxis("Roll") * (Time.deltaTime * RotationSpeed);
-        pitch = Input.GetAxis("Pitch") * (Time.deltaTime * RotationSpeed);
-        // yaw = Input.GetAxis("Yaw") * (Time.deltaTime * RotationSpeed);
+        roll = Input.GetAxis("Mouse X") * (Time.deltaTime * RotationSpeed);
+        pitch = Input.GetAxis("Mouse Y") * (Time.deltaTime * RotationSpeed);
+        //yaw = Input.GetAxis("Yaw") * (Time.deltaTime * RotationSpeed);
         Vector3 AddPos = Vector3.forward;
         gameObject.transform.Rotate(new Vector3(pitch, yaw, -roll));
+        moveDirection = (new Vector3(Input.GetAxis("Horizontal"), 0, 90) * (dragonRunningSpeed));
+        moveDirection *= dragonRunningSpeed;
 
         if (Input.GetButton("Jump"))
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            //moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= dragonRunningSpeed;
+            dragonAnimator.SetBool("flyIdle", false);
             moveDirection.y = dragonJumpSpeed;
-            dragonController.Move(moveDirection * Time.deltaTime);
+            
         }
         else
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= dragonRunningSpeed;
-            moveDirection.y = -dragonJumpSpeed / 2;
-            dragonController.Move(moveDirection * Time.deltaTime);
+            dragonAnimator.SetBool("flyIdle", true);
+            moveDirection.y = -dragonJumpSpeed;   
         }
+
+        moveDirection = transform.TransformDirection(moveDirection);
+        dragonController.Move(moveDirection * Time.deltaTime);
         Debug.Log("Dragon is Flying!");
     }
 
     private void moveGroundedDragon()
     {
-        float dragonRunningSpeed = 20.0f;
+        float dragonRunningSpeed = 10.0f;
         dragonAnimator.SetBool("isFlying", false);
         Debug.Log("Dragon is Grounded!");
-
-        if (Input.GetKey("up") || Input.GetKey("down") ||
-        Input.GetKey("left") || Input.GetKey("right"))
-        {
-            dragonAnimator.SetBool("isWalking", true);
-            dragonAnimator.SetBool("isIdle", false);
-
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= dragonRunningSpeed;
-            gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal"), 0));
-            dragonController.Move(moveDirection * Time.deltaTime);
-        }
-        else
-        {
-            dragonAnimator.SetBool("isWalking", false);
-            dragonAnimator.SetBool("isIdle", true);
-        }
 
         if (Input.GetButton("Jump"))
         {
@@ -134,5 +100,26 @@ public class PlayerControlledDragon : MonoBehaviour {
             moveDirection.y = dragonJumpSpeed;
             dragonController.Move(moveDirection * Time.deltaTime);
         }
+
+        if (Input.GetKey("w") || Input.GetKey("s"))
+        {
+            dragonAnimator.SetBool("isWalking", true);
+            dragonAnimator.SetBool("isIdle", false);
+
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= dragonRunningSpeed;
+           
+            dragonController.Move(moveDirection * Time.deltaTime);
+        }
+        else
+        {
+            dragonAnimator.SetBool("isWalking", false);
+            dragonAnimator.SetBool("isIdle", true);
+        }
+
+        gameObject.transform.RotateAroundLocal(new Vector3(0, 1, 0), Input.GetAxis("Mouse X") * 0.02f);
+
+
     }
 }
