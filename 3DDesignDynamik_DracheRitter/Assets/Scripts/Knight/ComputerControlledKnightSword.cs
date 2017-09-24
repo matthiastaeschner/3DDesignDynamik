@@ -18,8 +18,9 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		}
 	}
 
-	private float knightsRunningSpeed = 10.0f;
+	private float knightsRunningSpeed = 7.0f;
 	private float knightsRotationSpeed = 60.0f;
+	private float knightsGravity = 50.0f;
 
 	private GameObject sword;
 
@@ -51,9 +52,11 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * knightsRotationSpeed);
 
 		// move to opponent if too far away but dont interrupt sword swinging
+		directionToOpponent = directionToOpponent.normalized * knightsRunningSpeed;
+		// keep the knight on the ground
+		directionToOpponent.y -= knightsGravity;
 		if ((directionToOpponent.magnitude > 0.1f) && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Base Layer.Knight_Hit_Sword")) {
 			anim.Play ("Knight_Run_Sword");
-			directionToOpponent = directionToOpponent.normalized * knightsRunningSpeed;
 			charControl.Move (directionToOpponent * Time.deltaTime);
 		}
 	}
