@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControlledKnightSword : MonoBehaviour
-{
+{	
 	private Animator anim;
 	private CharacterController charControl;
 
@@ -33,7 +33,6 @@ public class PlayerControlledKnightSword : MonoBehaviour
 //		if (Debug.isDebugBuild) {
 //			Debug.Log ("PlayerControlledKnightSword-Script attached to " + gameObject.name);
 //		}
-
 		anim = gameObject.GetComponent<Animator> ();
 		charControl = gameObject.GetComponent<CharacterController> ();
 		// add collision-detection to sword and tell who is knight and who is opponent

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SwordHit : MonoBehaviour
 {
+	private GameManagement gameManager;
+
 	private GameObject knight;
 
 	public GameObject Knight {
@@ -28,17 +30,23 @@ public class SwordHit : MonoBehaviour
 		}
 	}
 
+	private int damageAmount = 5;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+		gameManager = GameObject.Find ("GameController").GetComponent<GameManagement> ();
 		knightAnim = knight.GetComponent<Animator> ();
 	}
 
 	// detect a collision with the opponent player while sword is swinged by knight
-	public void OnCollisionEnter(Collision collision){
-		if(collision.gameObject == opponentPlayer && knightAnim.GetCurrentAnimatorStateInfo (0).IsName ("Knight_Hit_Sword")) {
-			if (Debug.isDebugBuild) {
-				Debug.Log ("Sword collision with " + collision.gameObject.name);
-			}
+	public void OnCollisionEnter (Collision collision)
+	{
+		if (collision.gameObject == opponentPlayer && knightAnim.GetCurrentAnimatorStateInfo (0).IsName ("Knight_Hit_Sword")) {
+//			if (Debug.isDebugBuild) {
+//				Debug.Log ("Sword collision with " + collision.gameObject.name);
+//			}
+			gameManager.MakeDamage (opponentPlayer, damageAmount);
 		}
 	}
 }

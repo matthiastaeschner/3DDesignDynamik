@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour
@@ -22,16 +23,17 @@ public class GameManagement : MonoBehaviour
 	private Quaternion knightCurrentRotation;
 
 	// dragon
-	private GameObject dragon;
+	public GameObject dragon;
 	public GameObject dragonCameraHelper;
 
 	// GUI
-	public GameObject endButton;
-
-    private void Awake()
-    {
-        dragon = GameObject.FindGameObjectWithTag("Dragon");
-    }
+	public Button endButton;
+	public Text playersLifeText;
+	public Image playersLifeBar;
+	public Text opponentsLifeText;
+	public Image opponentsLifeBar;
+	public Button winOrLoseButton;
+	private GameObject opponent;
 
     // Use this for initialization
     void Start ()
@@ -52,14 +54,23 @@ public class GameManagement : MonoBehaviour
 			knightBow.AddComponent<PlayerControlledKnightBow> ();
 			knightBow.GetComponent<PlayerControlledKnightBow> ().OpponentPlayer = dragon;
 			dragon.AddComponent<ComputerControlledDragon> ();
+			// set text and life
+			playersLifeText.text = "Ritter";
+			opponentsLifeText.text = "Drache";
+			opponent = dragon;
 		} else {
 			// switch cameras
 			dragonCameraHelper.SetActive (true);
 			knightCameraHelper.SetActive (false);
 			// add character-scripts and define the oponent player
 			dragon.AddComponent<PlayerControlledDragon> ();
+			// dragon.GetComponent<PlayerControlledDragon> ().OpponentPlayer = knightSword;
 			knightSword.AddComponent<ComputerControlledKnightSword> ();
 			knightSword.GetComponent<ComputerControlledKnightSword> ().OpponentPlayer = dragon;
+			// set text and life
+			playersLifeText.text = "Drache";
+			opponentsLifeText.text = "Ritter";
+			opponent = knightSword;
 		}
 		// knight always starts standing with sword
 		knightWeapon = KnightWeaponMode.Sword;
@@ -114,15 +125,49 @@ public class GameManagement : MonoBehaviour
 		// for both players
 		// show or hide End-Button when hitting Escape
 		if (Input.GetButtonDown ("Cancel")) {
-			if (endButton.activeInHierarchy) {
-				endButton.SetActive (false);
+			if (endButton.IsActive()) {
+				endButton.gameObject.SetActive (false);
 			} else {
-				endButton.SetActive (true);
+				endButton.gameObject.SetActive (true);
 			}
+		}
+
+		// check life bars
+		if (opponentsLifeBar.fillAmount == 0 || playersLifeBar.fillAmount == 0) {
+			EndGameWinOrLose (character);
 		}
 	}
 
-	void OnDestroy ()
+	private void EndGameWinOrLose(ApplicationModel.PlayerCharacter character)
+	{
+		// Game is over, remove controls
+		if (character == ApplicationModel.PlayerCharacter.Knight) {
+			Destroy (knightSword.GetComponent<PlayerControlledKnightSword> ());
+			Destroy (knightBow.GetComponent<PlayerControlledKnightBow> ());
+			Destroy (dragon.GetComponent<ComputerControlledDragon> ());
+		} else if (character == ApplicationModel.PlayerCharacter.Dragon) {
+			Destroy (knightSword.GetComponent<ComputerControlledKnightSword> ());
+			Destroy (dragon.GetComponent<PlayerControlledDragon> ());
+		}
+		winOrLoseButton.gameObject.SetActive (true);
+		if (opponentsLifeBar.fillAmount == 0) {
+			winOrLoseButton.GetComponentInChildren<Text> ().text = "Du hast gewonnen.\nHier klicken zum Beenden.";
+		} else if (playersLifeBar.fillAmount == 0) {
+			winOrLoseButton.GetComponentInChildren<Text> ().text = "Du hast verloren.\nHier klicken zum Beenden.";
+		}
+
+	}
+
+	public void MakeDamage(GameObject character, int damageAmount)
+	{
+		if (character == opponent) {
+			opponentsLifeBar.fillAmount -= damageAmount / 50f;
+		} else {
+			playersLifeBar.fillAmount -= damageAmount / 50f;
+		}
+	}
+
+	public void OnDestroy ()
 	{
 //		if (Debug.isDebugBuild) {
 //			Debug.Log ("Destroy");

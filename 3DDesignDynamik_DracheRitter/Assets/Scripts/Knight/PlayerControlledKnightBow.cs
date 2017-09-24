@@ -32,7 +32,6 @@ public class PlayerControlledKnightBow : MonoBehaviour
 //		if (Debug.isDebugBuild) {
 //			Debug.Log ("PlayerControlledKnightBow-Script attached to " + gameObject.name);
 //		}
-
 		anim = gameObject.GetComponent<Animator> ();
 		charControl = gameObject.GetComponent<CharacterController> ();
 	}
