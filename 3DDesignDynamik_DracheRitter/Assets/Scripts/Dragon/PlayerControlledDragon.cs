@@ -125,13 +125,14 @@ public class PlayerControlledDragon : MonoBehaviour {
             }
             dragonAnimator.SetBool("flyIdle", false);
             moveDirection.y = dragonJumpSpeed;
+            
         }
         else
         {
             wingSource.Stop();
             dragonAnimator.SetBool("flyIdle", true);
-            moveDirection.y = -dragonJumpSpeed;   
-        }
+            moveDirection.y = Vector3.down.y * dragonJumpSpeed;
+        }                      
 
         moveDirection = transform.TransformDirection(moveDirection);
         dragonController.Move(moveDirection * Time.deltaTime);

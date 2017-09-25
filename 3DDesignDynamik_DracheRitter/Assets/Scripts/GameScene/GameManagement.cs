@@ -25,8 +25,6 @@ public class GameManagement : MonoBehaviour
 	// dragon
 	public GameObject dragon;
 	public GameObject dragonCameraHelper;
-//	public GameObject fire;
-//	public ParticleSystem fireEffect;
 
 	// GUI
 	public Button endButton;
@@ -65,8 +63,8 @@ public class GameManagement : MonoBehaviour
 			opponentsLifeText.text = "Drache";
 			opponent = dragon;
 		} else {
-			// switch cameras
-			dragonCameraHelper.SetActive (true);
+            // switch cameras
+            dragonCameraHelper.SetActive(true);
 			knightCameraHelper.SetActive (false);
 			// add character-scripts and define the oponent player
 			// dragon
