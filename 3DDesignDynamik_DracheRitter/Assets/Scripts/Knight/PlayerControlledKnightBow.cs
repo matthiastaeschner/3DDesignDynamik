@@ -111,7 +111,6 @@ public class PlayerControlledKnightBow : MonoBehaviour
 			// adjust arrows rotation to fly a little upwards
 			arrowClone.transform.rotation *= Quaternion.AngleAxis (-5f, arrowClone.transform.right);
 			arrowClone.GetComponent<Rigidbody> ().velocity = arrowClone.transform.forward * arrowSpeed;
-
 			audioBowShoot.Play ();
 		}
 

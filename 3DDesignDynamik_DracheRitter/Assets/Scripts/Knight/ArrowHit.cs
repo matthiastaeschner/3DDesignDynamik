@@ -33,5 +33,7 @@ public class ArrowHit : MonoBehaviour
 //			}
 			gameManager.MakeDamage (opponentPlayer, damageAmount);
 		}
+		// destroy arrow after hit
+		Destroy (gameObject);
 	}
 }

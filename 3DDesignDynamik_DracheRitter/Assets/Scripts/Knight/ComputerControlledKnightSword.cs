@@ -21,6 +21,8 @@ public class ComputerControlledKnightSword : MonoBehaviour
 	private float knightsRunningSpeed = 5.0f;
 	private float knightsRotationSpeed = 60.0f;
 	private float knightsGravity = 50.0f;
+	private bool isWalking = false;
+	private bool isWalkingAudio = false;
 
 	private GameObject sword;
 
@@ -57,20 +59,21 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		walkGravel = (AudioClip)Resources.Load ("Audio/WalkingGravel", typeof(AudioClip));
 		walkGravel.LoadAudioData ();
 		audioWalk.clip = walkGravel;
-		audioWalk.volume = 0.5f;
+		audioWalk.loop = true;
+		audioWalk.volume = 0.3f;
 		audioWalk.pitch = 1.5f;
 		audioGrunt = gameObject.AddComponent<AudioSource> ();
 		audioGrunt.playOnAwake = false;
 		grunt = (AudioClip)Resources.Load ("Audio/KnightGrunt", typeof(AudioClip));
 		grunt.LoadAudioData ();
 		audioGrunt.clip = grunt;
-		audioGrunt.volume = 0.5f;
+		audioGrunt.volume = 0.3f;
 		audioSwordSwing = gameObject.AddComponent<AudioSource> ();
 		audioSwordSwing.playOnAwake = false;
 		swordSwing = (AudioClip)Resources.Load ("Audio/SwordSwing", typeof(AudioClip));
 		swordSwing.LoadAudioData ();
 		audioSwordSwing.clip = swordSwing;
-		audioSwordSwing.volume = 0.5f;
+		audioSwordSwing.volume = 0.3f;
 		audioPain = gameObject.AddComponent<AudioSource> ();
 		audioPain.playOnAwake = false;
 		pain = (AudioClip)Resources.Load ("Audio/KnightPain", typeof(AudioClip));
@@ -99,8 +102,13 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		// keep the knight on the ground
 		directionToOpponentMove.y -= knightsGravity;
 		if ((directionToOpponent.magnitude > 0.1f) && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Base Layer.Knight_Hit_Sword")) {
+			isWalking = true;
 			anim.Play ("Knight_Run_Sword");
 			charControl.Move (directionToOpponentMove * Time.deltaTime);
+		} 
+		if (isWalking && !isWalkingAudio) {
+			audioWalk.Play ();
+			isWalkingAudio = true;
 		}
 	}
 
@@ -109,6 +117,9 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		// if the character collides with dragon while moving
 		if (hit.gameObject == opponentPlayer) {
 			anim.Play ("Knight_Hit_Sword");
+			audioWalk.Pause ();
+			isWalking = false;
+			isWalkingAudio = false;
 			audioSwordSwing.Play ();
 			audioGrunt.Play ();
 		}
