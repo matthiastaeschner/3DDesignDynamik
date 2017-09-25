@@ -12,9 +12,6 @@ public class GameManagement : MonoBehaviour
 	public GameObject knightBow;
 	public GameObject knightCameraHelper;
 
-    public GameObject fire;
-    public ParticleSystem fireEffect;
-
 	public enum KnightWeaponMode
 	{
 		Sword,
@@ -28,6 +25,8 @@ public class GameManagement : MonoBehaviour
 	// dragon
 	public GameObject dragon;
 	public GameObject dragonCameraHelper;
+//	public GameObject fire;
+//	public ParticleSystem fireEffect;
 
 	// GUI
 	public Button endButton;
@@ -52,10 +51,13 @@ public class GameManagement : MonoBehaviour
 			dragonCameraHelper.SetActive (false);
 			knightCameraHelper.SetActive (true);
 			// add character-scripts and define the oponent player
+			// knight with sword
 			knightSword.AddComponent<PlayerControlledKnightSword> ();
 			knightSword.GetComponent<PlayerControlledKnightSword> ().OpponentPlayer = dragon;
+			// knight with bow
 			knightBow.AddComponent<PlayerControlledKnightBow> ();
 			knightBow.GetComponent<PlayerControlledKnightBow> ().OpponentPlayer = dragon;
+			// dragon
 			dragon.AddComponent<ComputerControlledDragon> ();
 			dragon.GetComponent<ComputerControlledDragon> ().OpponentPlayer = knightSword;
 			// set text and life
@@ -67,8 +69,10 @@ public class GameManagement : MonoBehaviour
 			dragonCameraHelper.SetActive (true);
 			knightCameraHelper.SetActive (false);
 			// add character-scripts and define the oponent player
+			// dragon
 			dragon.AddComponent<PlayerControlledDragon> ();
 			dragon.GetComponent<PlayerControlledDragon> ().OpponentPlayer = knightSword;
+			// knight with sword
 			knightSword.AddComponent<ComputerControlledKnightSword> ();
 			knightSword.GetComponent<ComputerControlledKnightSword> ().OpponentPlayer = dragon;
 			// set text and life
@@ -172,6 +176,16 @@ public class GameManagement : MonoBehaviour
 			opponentsLifeBar.fillAmount -= damageAmount / 100f;
 		} else {
 			playersLifeBar.fillAmount -= damageAmount / 100f;
+		}
+		// play pain sound
+		if (character == knightSword && opponent == dragon) {
+			knightSword.GetComponent<PlayerControlledKnightSword> ().PlayPainAudio ();
+		}
+		if (character == knightBow && opponent == dragon) {
+			knightSword.GetComponent<PlayerControlledKnightBow> ().PlayPainAudio ();
+		}
+		if (character == knightSword && opponent == knightSword) {
+			knightSword.GetComponent<ComputerControlledKnightSword> ().PlayPainAudio ();
 		}
 	}
 
