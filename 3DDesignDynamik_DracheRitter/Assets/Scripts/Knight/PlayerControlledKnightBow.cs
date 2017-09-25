@@ -26,6 +26,20 @@ public class PlayerControlledKnightBow : MonoBehaviour
 		}
 	}
 
+	private AudioSource audioWalk;
+	private AudioSource audioBowShoot;
+	private AudioClip bowShoot;
+	private AudioClip walkGravel;
+	private AudioSource audioPain;
+	private AudioClip pain;
+
+	public void PlayPainAudio()
+	{
+		if (audioPain.clip.loadState == AudioDataLoadState.Loaded) {
+			audioPain.Play ();
+		}
+	}
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -34,6 +48,23 @@ public class PlayerControlledKnightBow : MonoBehaviour
 //		}
 		anim = gameObject.GetComponent<Animator> ();
 		charControl = gameObject.GetComponent<CharacterController> ();
+		// audio sources with clips
+		audioWalk = gameObject.AddComponent<AudioSource> ();
+		audioWalk.playOnAwake = false;
+		walkGravel = (AudioClip)Resources.Load ("Audio/WalkingGravel", typeof(AudioClip));
+		walkGravel.LoadAudioData ();
+		audioWalk.clip = walkGravel;
+		audioWalk.pitch = 1.5f;
+		audioBowShoot = gameObject.AddComponent<AudioSource> ();
+		audioBowShoot.playOnAwake = false;
+		bowShoot = (AudioClip)Resources.Load ("Audio/ArrowShoot", typeof(AudioClip));
+		bowShoot.LoadAudioData ();
+		audioBowShoot.clip = bowShoot;
+		audioPain = gameObject.AddComponent<AudioSource> ();
+		audioPain.playOnAwake = false;
+		pain = (AudioClip)Resources.Load ("Audio/KnightPain", typeof(AudioClip));
+		pain.LoadAudioData ();
+		audioPain.clip = pain;
 	}
 
 	// Update is called once per frame
@@ -80,6 +111,16 @@ public class PlayerControlledKnightBow : MonoBehaviour
 			// adjust arrows rotation to fly a little upwards
 			arrowClone.transform.rotation *= Quaternion.AngleAxis (-5f, arrowClone.transform.right);
 			arrowClone.GetComponent<Rigidbody> ().velocity = arrowClone.transform.forward * arrowSpeed;
+
+			audioBowShoot.Play ();
+		}
+
+		// play walk audio
+		if ((Input.GetButtonDown ("Horizontal") || Input.GetButtonDown ("Vertical"))) {
+			audioWalk.Play ();
+		}
+		if (Input.GetButtonUp ("Horizontal") || Input.GetButtonUp ("Vertical")) {
+			audioWalk.Pause ();
 		}
 	}
 }
