@@ -87,7 +87,8 @@ public class ComputerControlledDragon : MonoBehaviour {
 			fireEffect = (GameObject) Instantiate(Resources.Load("Prefabs/FirePrefab")) as GameObject;
 			fireEffect.AddComponent<FireHit> ().OpponentPlayer = opponentPlayer;
 			fireEffect.GetComponent<FireHit> ().Dragon = gameObject;
-			fireEffect.transform.position = fireEmitter.transform.position;
+            fireEffect.transform.position = fireEmitter.transform.position;
+            fireEffect.transform.rotation = fireEmitter.transform.rotation;
             Destroy(fireEffect, fireEffect.GetComponent<ParticleSystem>().main.duration);
         }
 
