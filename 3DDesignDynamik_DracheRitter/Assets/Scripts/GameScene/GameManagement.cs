@@ -57,6 +57,7 @@ public class GameManagement : MonoBehaviour
 			knightBow.AddComponent<PlayerControlledKnightBow> ();
 			knightBow.GetComponent<PlayerControlledKnightBow> ().OpponentPlayer = dragon;
 			dragon.AddComponent<ComputerControlledDragon> ();
+			dragon.GetComponent<ComputerControlledDragon> ().OpponentPlayer = knightSword;
 			// set text and life
 			playersLifeText.text = "Ritter";
 			opponentsLifeText.text = "Drache";
@@ -67,8 +68,7 @@ public class GameManagement : MonoBehaviour
 			knightCameraHelper.SetActive (false);
 			// add character-scripts and define the oponent player
 			dragon.AddComponent<PlayerControlledDragon> ();
-            
-			// dragon.GetComponent<PlayerControlledDragon> ().OpponentPlayer = knightSword;
+			dragon.GetComponent<PlayerControlledDragon> ().OpponentPlayer = knightSword;
 			knightSword.AddComponent<ComputerControlledKnightSword> ();
 			knightSword.GetComponent<ComputerControlledKnightSword> ().OpponentPlayer = dragon;
 			// set text and life
@@ -103,6 +103,8 @@ public class GameManagement : MonoBehaviour
 					knightCameraHelper.transform.parent = knightBow.transform;
 					knightCameraHelper.transform.position = knightBow.transform.position;
 					knightCameraHelper.transform.rotation = knightBow.transform.rotation;
+					// tell dragon the new opponent
+					dragon.GetComponent<ComputerControlledDragon> ().OpponentPlayer = knightBow;
 				} else {				
 					knightWeapon = KnightWeaponMode.Sword;
 					knightBow.GetComponent<Animator> ().Play ("Knight_ChangeWeapon_ToSword_Part1");
@@ -118,6 +120,8 @@ public class GameManagement : MonoBehaviour
 					knightCameraHelper.transform.parent = knightSword.transform;
 					knightCameraHelper.transform.position = knightSword.transform.position;
 					knightCameraHelper.transform.rotation = knightSword.transform.rotation;
+					// tell dragon the new opponent
+					dragon.GetComponent<ComputerControlledDragon> ().OpponentPlayer = knightSword;
 				}
 			}
 
@@ -165,9 +169,9 @@ public class GameManagement : MonoBehaviour
 	public void MakeDamage(GameObject character, int damageAmount)
 	{
 		if (character == opponent) {
-			opponentsLifeBar.fillAmount -= damageAmount / 50f;
+			opponentsLifeBar.fillAmount -= damageAmount / 100f;
 		} else {
-			playersLifeBar.fillAmount -= damageAmount / 50f;
+			playersLifeBar.fillAmount -= damageAmount / 100f;
 		}
 	}
 

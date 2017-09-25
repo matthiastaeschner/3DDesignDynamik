@@ -13,7 +13,20 @@ public class PlayerControlledDragon : MonoBehaviour {
 
     public float dragonGravity = 50.0f;
     public float dragonJumpSpeed = 20.0f;
+	private float RotationSpeed = 50;
     private Vector3 moveDirection = Vector3.zero;
+	private Vector3 initialRotation;
+
+	private GameObject opponentPlayer;
+
+	public GameObject OpponentPlayer {
+		get {
+			return opponentPlayer;
+		}
+		set {
+			opponentPlayer = value;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +36,7 @@ public class PlayerControlledDragon : MonoBehaviour {
         moveDirection.y = -dragonJumpSpeed;
         dragonController.Move(moveDirection * Time.deltaTime);
         fireEmitter = GameObject.FindGameObjectWithTag("Fire");
-        
+		initialRotation = gameObject.transform.rotation.eulerAngles;
     }
 
 	// Update is called once per frame
@@ -31,6 +44,8 @@ public class PlayerControlledDragon : MonoBehaviour {
 
         if (dragonController.isGrounded)
          {
+			Quaternion tempRot = Quaternion.Euler (new Vector3(initialRotation.x, gameObject.transform.rotation.eulerAngles.y, initialRotation.z));
+			gameObject.transform.rotation = Quaternion.Slerp (gameObject.transform.rotation, tempRot, 5f * Time.deltaTime);
             moveGroundedDragon();
 
         } else if(!dragonController.isGrounded && dragonAnimator.GetBool("isFlying") == true)
@@ -52,6 +67,8 @@ public class PlayerControlledDragon : MonoBehaviour {
         if(Input.GetMouseButtonDown(0))
         {
             fireEffect = (GameObject) Instantiate(Resources.Load("Prefabs/FirePrefab")) as GameObject;
+			fireEffect.AddComponent<FireHit> ().OpponentPlayer = opponentPlayer;
+			fireEffect.GetComponent<FireHit> ().Dragon = gameObject;
             fireEffect.transform.position = fireEmitter.transform.position;
         }
         
@@ -64,7 +81,7 @@ public class PlayerControlledDragon : MonoBehaviour {
         float pitch = 0;
         float yaw = 0;
 
-        float RotationSpeed = 50;
+        
 
         float dragonRunningSpeed = 0.50f;
 
