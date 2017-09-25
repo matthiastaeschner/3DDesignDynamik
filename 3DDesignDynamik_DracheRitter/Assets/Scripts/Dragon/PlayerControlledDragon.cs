@@ -70,7 +70,7 @@ public class PlayerControlledDragon : MonoBehaviour {
 
         roll = Input.GetAxis("Mouse X") * (Time.deltaTime * RotationSpeed);
         pitch = Input.GetAxis("Mouse Y") * (Time.deltaTime * RotationSpeed);
-        //yaw = Input.GetAxis("Yaw") * (Time.deltaTime * RotationSpeed);
+        yaw = Input.GetAxis("Horizontal") * (Time.deltaTime * RotationSpeed);
         Vector3 AddPos = Vector3.forward;
         gameObject.transform.Rotate(new Vector3(pitch, yaw, -roll));
         moveDirection = (new Vector3(Input.GetAxis("Horizontal"), 0, 90) * (dragonRunningSpeed));
@@ -79,8 +79,7 @@ public class PlayerControlledDragon : MonoBehaviour {
         if (Input.GetButton("Jump"))
         {
             dragonAnimator.SetBool("flyIdle", false);
-            moveDirection.y = dragonJumpSpeed;
-            
+            moveDirection.y = dragonJumpSpeed;  
         }
         else
         {
@@ -107,8 +106,9 @@ public class PlayerControlledDragon : MonoBehaviour {
             dragonController.Move(moveDirection * Time.deltaTime);
         }
 
-        if (Input.GetKey("w") || Input.GetKey("s"))
+        if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("d"))
         {
+            dragonAnimator.SetBool("isWalkingBackwards", false);
             dragonAnimator.SetBool("isWalking", true);
             dragonAnimator.SetBool("isIdle", false);
 
@@ -118,9 +118,22 @@ public class PlayerControlledDragon : MonoBehaviour {
            
             dragonController.Move(moveDirection * Time.deltaTime);
         }
+
+        else if(Input.GetKey("s")){
+            dragonAnimator.SetBool("isWalking", false);
+            dragonAnimator.SetBool("isWalkingBackwards", true);
+            dragonAnimator.SetBool("isIdle", false);
+
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= dragonRunningSpeed;
+
+            dragonController.Move(moveDirection * Time.deltaTime);
+        }
         else
         {
             dragonAnimator.SetBool("isWalking", false);
+            dragonAnimator.SetBool("isWalkingBackwards", false);
             dragonAnimator.SetBool("isIdle", true);
         }
 
