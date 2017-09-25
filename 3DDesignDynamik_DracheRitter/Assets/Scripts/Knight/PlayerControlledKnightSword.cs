@@ -56,23 +56,23 @@ public class PlayerControlledKnightSword : MonoBehaviour
 		// audio sources with clips
 		audioWalk = gameObject.AddComponent<AudioSource> ();
 		audioWalk.playOnAwake = false;
-		walkGravel = (AudioClip)Resources.Load ("Audio/WalkingGravel", typeof(AudioClip));
+		walkGravel = (AudioClip)Resources.Load ("Sounds/Knight/WalkingGravel", typeof(AudioClip));
 		walkGravel.LoadAudioData ();
 		audioWalk.clip = walkGravel;
 		audioWalk.pitch = 1.5f;
 		audioGrunt = gameObject.AddComponent<AudioSource> ();
 		audioGrunt.playOnAwake = false;
-		grunt = (AudioClip)Resources.Load ("Audio/KnightGrunt", typeof(AudioClip));
+		grunt = (AudioClip)Resources.Load ("Sounds/Knight/KnightGrunt", typeof(AudioClip));
 		grunt.LoadAudioData ();
 		audioGrunt.clip = grunt;
 		audioSwordSwing = gameObject.AddComponent<AudioSource> ();
 		audioSwordSwing.playOnAwake = false;
-		swordSwing = (AudioClip)Resources.Load ("Audio/SwordSwing", typeof(AudioClip));
+		swordSwing = (AudioClip)Resources.Load ("Sounds/Knight/SwordSwing", typeof(AudioClip));
 		swordSwing.LoadAudioData ();
 		audioSwordSwing.clip = swordSwing;
 		audioPain = gameObject.AddComponent<AudioSource> ();
 		audioPain.playOnAwake = false;
-		pain = (AudioClip)Resources.Load ("Audio/KnightPain", typeof(AudioClip));
+		pain = (AudioClip)Resources.Load ("Sounds/Knight/KnightPain", typeof(AudioClip));
 		pain.LoadAudioData ();
 		audioPain.clip = pain;
 		// add collision-detection to sword and tell who is knight and who is opponent

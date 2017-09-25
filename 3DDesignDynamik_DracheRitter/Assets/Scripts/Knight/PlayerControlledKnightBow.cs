@@ -51,18 +51,18 @@ public class PlayerControlledKnightBow : MonoBehaviour
 		// audio sources with clips
 		audioWalk = gameObject.AddComponent<AudioSource> ();
 		audioWalk.playOnAwake = false;
-		walkGravel = (AudioClip)Resources.Load ("Audio/WalkingGravel", typeof(AudioClip));
+		walkGravel = (AudioClip)Resources.Load ("Sounds/Knight/WalkingGravel", typeof(AudioClip));
 		walkGravel.LoadAudioData ();
 		audioWalk.clip = walkGravel;
 		audioWalk.pitch = 1.5f;
 		audioBowShoot = gameObject.AddComponent<AudioSource> ();
 		audioBowShoot.playOnAwake = false;
-		bowShoot = (AudioClip)Resources.Load ("Audio/ArrowShoot", typeof(AudioClip));
+		bowShoot = (AudioClip)Resources.Load ("Sounds/Knight/ArrowShoot", typeof(AudioClip));
 		bowShoot.LoadAudioData ();
 		audioBowShoot.clip = bowShoot;
 		audioPain = gameObject.AddComponent<AudioSource> ();
 		audioPain.playOnAwake = false;
-		pain = (AudioClip)Resources.Load ("Audio/KnightPain", typeof(AudioClip));
+		pain = (AudioClip)Resources.Load ("Sounds/Knight/KnightPain", typeof(AudioClip));
 		pain.LoadAudioData ();
 		audioPain.clip = pain;
 	}
