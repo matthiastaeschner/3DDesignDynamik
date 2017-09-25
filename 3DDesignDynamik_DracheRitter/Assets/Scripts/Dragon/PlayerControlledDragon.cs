@@ -16,8 +16,11 @@ public class PlayerControlledDragon : MonoBehaviour {
 	private float RotationSpeed = 50;
     private Vector3 moveDirection = Vector3.zero;
 	private Vector3 initialRotation;
+    private AudioSource fireSource, windSource, wingSource;
 
-	private GameObject opponentPlayer;
+    private AudioClip fire, wings, wind;
+
+    private GameObject opponentPlayer;
 
 	public GameObject OpponentPlayer {
 		get {
@@ -29,7 +32,8 @@ public class PlayerControlledDragon : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         gameManager = GameObject.Find("GameController").GetComponent<GameManagement>();
         dragonAnimator = gameObject.GetComponent<Animator>();
         dragonController = gameObject.GetComponent<CharacterController>();
@@ -37,6 +41,22 @@ public class PlayerControlledDragon : MonoBehaviour {
         dragonController.Move(moveDirection * Time.deltaTime);
         fireEmitter = GameObject.FindGameObjectWithTag("Fire");
 		initialRotation = gameObject.transform.rotation.eulerAngles;
+        fire = (AudioClip)Resources.Load("Sounds/Dragon/fire");
+        wind = (AudioClip)Resources.Load("Sounds/Dragon/wind");
+        wings = (AudioClip)Resources.Load("Sounds/Dragon/wings");
+
+        fireSource = gameObject.AddComponent<AudioSource>();
+        fireSource.clip = fire;
+        wingSource = gameObject.AddComponent<AudioSource>();
+        wingSource.loop = true;
+        wingSource.clip = wings;
+        windSource = gameObject.AddComponent<AudioSource>();
+        windSource.loop = true;
+        windSource.volume = 0.2f;
+        windSource.clip = wind;
+        windSource.Play();
+
+
     }
 
 	// Update is called once per frame
@@ -58,20 +78,22 @@ public class PlayerControlledDragon : MonoBehaviour {
             dragonController.Move(moveDirection * Time.deltaTime); 
         }
 
-        Fire();
+        if (Input.GetMouseButtonDown(0))
+        {
+            Fire();
+        }
 
     }
 
     private void Fire()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            fireEffect = (GameObject) Instantiate(Resources.Load("Prefabs/FirePrefab")) as GameObject;
-			fireEffect.AddComponent<FireHit> ().OpponentPlayer = opponentPlayer;
-			fireEffect.GetComponent<FireHit> ().Dragon = gameObject;
-            fireEffect.transform.position = fireEmitter.transform.position;
-        }
+        fireSource.Play();
         
+        fireEffect = (GameObject) Instantiate(Resources.Load("Prefabs/FirePrefab")) as GameObject;
+		fireEffect.AddComponent<FireHit> ().OpponentPlayer = opponentPlayer;
+		fireEffect.GetComponent<FireHit> ().Dragon = gameObject;
+        fireEffect.transform.position = fireEmitter.transform.position;
+        Destroy(fireEffect, fireEffect.GetComponent<ParticleSystem>().main.duration);
     }
 
     private void moveFlyingDragon()
@@ -80,9 +102,6 @@ public class PlayerControlledDragon : MonoBehaviour {
         float roll = 0;
         float pitch = 0;
         float yaw = 0;
-
-        
-
         float dragonRunningSpeed = 0.50f;
 
         roll = Input.GetAxis("Mouse X") * (Time.deltaTime * RotationSpeed);
@@ -95,11 +114,17 @@ public class PlayerControlledDragon : MonoBehaviour {
 
         if (Input.GetButton("Jump"))
         {
+            
+            if(wingSource.isPlaying == false)
+            {
+                wingSource.Play();
+            }
             dragonAnimator.SetBool("flyIdle", false);
-            moveDirection.y = dragonJumpSpeed;  
+            moveDirection.y = dragonJumpSpeed;
         }
         else
         {
+            wingSource.Stop();
             dragonAnimator.SetBool("flyIdle", true);
             moveDirection.y = -dragonJumpSpeed;   
         }
@@ -113,7 +138,6 @@ public class PlayerControlledDragon : MonoBehaviour {
     {
         float dragonRunningSpeed = 10.0f;
         dragonAnimator.SetBool("isFlying", false);
-        
 
         if (Input.GetButton("Jump"))
         {
