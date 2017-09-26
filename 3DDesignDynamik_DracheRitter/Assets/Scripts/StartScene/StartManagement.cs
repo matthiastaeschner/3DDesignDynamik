@@ -26,4 +26,9 @@ public class StartManagement : MonoBehaviour
 	{
 		SceneManager.LoadScene ("Info");
 	}
+
+    public void EndGame()
+    {
+        Application.Quit();
+    }
 }

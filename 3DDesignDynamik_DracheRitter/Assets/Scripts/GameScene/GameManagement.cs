@@ -128,18 +128,23 @@ public class GameManagement : MonoBehaviour
 				}
 			}
 
-		} else if (character == ApplicationModel.PlayerCharacter.Dragon) {
-			// playing with dragon
-
-		} 
+		}
 
 		// for both players
 		// show or hide End-Button when hitting Escape
 		if (Input.GetButtonDown ("Cancel")) {
-			if (endButton.IsActive()) {
-				endButton.gameObject.SetActive (false);
+           
+            // Free the Cursor!
+            if(Cursor.lockState == CursorLockMode.Locked) {
+                Cursor.lockState = CursorLockMode.None;
+            } else {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+
+            if (endButton.IsActive()) {
+                endButton.gameObject.SetActive (false);
 			} else {
-				endButton.gameObject.SetActive (true);
+                endButton.gameObject.SetActive (true);
 			}
 		}
 
@@ -151,8 +156,9 @@ public class GameManagement : MonoBehaviour
 
 	private void EndGameWinOrLose(ApplicationModel.PlayerCharacter character)
 	{
-		// Game is over, remove controls
-		if (character == ApplicationModel.PlayerCharacter.Knight) {
+        Cursor.lockState = CursorLockMode.None;
+        // Game is over, remove controls
+        if (character == ApplicationModel.PlayerCharacter.Knight) {
 			Destroy (knightSword.GetComponent<PlayerControlledKnightSword> ());
 			Destroy (knightBow.GetComponent<PlayerControlledKnightBow> ());
 			Destroy (dragon.GetComponent<ComputerControlledDragon> ());
