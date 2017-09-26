@@ -38,6 +38,8 @@ public class ComputerControlledDragon : MonoBehaviour {
         footsteps = (AudioClip)Resources.Load("Sounds/Dragon/footsteps");
 
         footstepSource = gameObject.AddComponent<AudioSource>();
+        footstepSource.spatialBlend = 1.0f;
+        footstepSource.rolloffMode = AudioRolloffMode.Linear;
         footstepSource.clip = footsteps;
         fireSource = gameObject.AddComponent<AudioSource>();
         fireSource.clip = fire;
@@ -62,9 +64,8 @@ public class ComputerControlledDragon : MonoBehaviour {
 		Quaternion lookRotation = Quaternion.LookRotation(directionToOpponent.normalized);
 		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * dragonRotationSpeed);
 
-		// move to opponent if too far away but dont interrupt sword swinging
 		Vector3 directionToOpponentMove = directionToOpponent.normalized * dragonRunningSpeed;
-		// keep the knight on the ground
+
 		directionToOpponentMove.y -= dragonGravity;
 
 		if (directionToOpponent.magnitude > 20f) {

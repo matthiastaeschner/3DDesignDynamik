@@ -18,7 +18,7 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		}
 	}
 
-	private float knightsRunningSpeed = 5.0f;
+	private float knightsRunningSpeed = 15.0f;
 	private float knightsRotationSpeed = 60.0f;
 	private float knightsGravity = 50.0f;
 	private bool isWalking = false;
@@ -47,14 +47,17 @@ public class ComputerControlledKnightSword : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-//		if (Debug.isDebugBuild) {
-//			Debug.Log ("ComputerControlledKnight-Script attached to " + gameObject.name);
-//		}
+        //		if (Debug.isDebugBuild) {
+        //			Debug.Log ("ComputerControlledKnight-Script attached to " + gameObject.name);
+        //		}
+        
 		anim = gameObject.GetComponent<Animator> ();
 		anim.Play ("Knight_Stand_Sword");
 		charControl = gameObject.GetComponent<CharacterController> ();
 		// audio sources with clips
 		audioWalk = gameObject.AddComponent<AudioSource> ();
+        audioWalk.spatialBlend = 1.0f;
+        audioWalk.rolloffMode = AudioRolloffMode.Linear;
 		audioWalk.playOnAwake = false;
 		walkGravel = (AudioClip)Resources.Load ("Sounds/Knight/WalkingGravel", typeof(AudioClip));
 		walkGravel.LoadAudioData ();

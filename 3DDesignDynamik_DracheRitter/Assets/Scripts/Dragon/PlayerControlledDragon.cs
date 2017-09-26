@@ -58,8 +58,6 @@ public class PlayerControlledDragon : MonoBehaviour {
         windSource.Play();
         footstepSource = gameObject.AddComponent<AudioSource>();
         footstepSource.clip = footsteps;
-
-
     }
 
 	// Update is called once per frame
@@ -73,6 +71,7 @@ public class PlayerControlledDragon : MonoBehaviour {
 
         } else if(!dragonController.isGrounded && dragonAnimator.GetBool("isFlying") == true)
         {
+            footstepSource.Stop();
             moveFlyingDragon();
         }
         else
@@ -106,7 +105,7 @@ public class PlayerControlledDragon : MonoBehaviour {
         float roll = 0;
         float pitch = 0;
         float yaw = 0;
-        float dragonRunningSpeed = 0.50f;
+        float dragonRunningSpeed = .75f;
 
         roll = Input.GetAxis("Mouse X") * (Time.deltaTime * RotationSpeed);
         pitch = Input.GetAxis("Mouse Y") * (Time.deltaTime * RotationSpeed);
