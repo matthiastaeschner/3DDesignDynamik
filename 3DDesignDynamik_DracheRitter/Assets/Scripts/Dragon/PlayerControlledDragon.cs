@@ -16,9 +16,9 @@ public class PlayerControlledDragon : MonoBehaviour {
 	private float RotationSpeed = 50;
     private Vector3 moveDirection = Vector3.zero;
 	private Vector3 initialRotation;
-    private AudioSource fireSource, windSource, wingSource;
+    private AudioSource fireSource, windSource, wingSource, footstepSource;
 
-    private AudioClip fire, wings, wind;
+    private AudioClip fire, wings, wind, footsteps;
 
     private GameObject opponentPlayer;
 
@@ -44,6 +44,7 @@ public class PlayerControlledDragon : MonoBehaviour {
         fire = (AudioClip)Resources.Load("Sounds/Dragon/fire");
         wind = (AudioClip)Resources.Load("Sounds/Dragon/wind");
         wings = (AudioClip)Resources.Load("Sounds/Dragon/wings");
+        footsteps = (AudioClip)Resources.Load("Sounds/Dragon/footsteps");
 
         fireSource = gameObject.AddComponent<AudioSource>();
         fireSource.clip = fire;
@@ -55,8 +56,8 @@ public class PlayerControlledDragon : MonoBehaviour {
         windSource.volume = 0.2f;
         windSource.clip = wind;
         windSource.Play();
-
-
+        footstepSource = gameObject.AddComponent<AudioSource>();
+        footstepSource.clip = footsteps;
     }
 
 	// Update is called once per frame
@@ -70,6 +71,7 @@ public class PlayerControlledDragon : MonoBehaviour {
 
         } else if(!dragonController.isGrounded && dragonAnimator.GetBool("isFlying") == true)
         {
+            footstepSource.Stop();
             moveFlyingDragon();
         }
         else
@@ -93,6 +95,7 @@ public class PlayerControlledDragon : MonoBehaviour {
 		fireEffect.AddComponent<FireHit> ().OpponentPlayer = opponentPlayer;
 		fireEffect.GetComponent<FireHit> ().Dragon = gameObject;
         fireEffect.transform.position = fireEmitter.transform.position;
+        fireEffect.transform.rotation = fireEmitter.transform.rotation;
         Destroy(fireEffect, fireEffect.GetComponent<ParticleSystem>().main.duration);
     }
 
@@ -102,7 +105,7 @@ public class PlayerControlledDragon : MonoBehaviour {
         float roll = 0;
         float pitch = 0;
         float yaw = 0;
-        float dragonRunningSpeed = 0.50f;
+        float dragonRunningSpeed = .75f;
 
         roll = Input.GetAxis("Mouse X") * (Time.deltaTime * RotationSpeed);
         pitch = Input.GetAxis("Mouse Y") * (Time.deltaTime * RotationSpeed);
@@ -121,13 +124,14 @@ public class PlayerControlledDragon : MonoBehaviour {
             }
             dragonAnimator.SetBool("flyIdle", false);
             moveDirection.y = dragonJumpSpeed;
+            
         }
         else
         {
             wingSource.Stop();
             dragonAnimator.SetBool("flyIdle", true);
-            moveDirection.y = -dragonJumpSpeed;   
-        }
+            moveDirection.y = Vector3.down.y * dragonJumpSpeed;
+        }                      
 
         moveDirection = transform.TransformDirection(moveDirection);
         dragonController.Move(moveDirection * Time.deltaTime);
@@ -149,6 +153,10 @@ public class PlayerControlledDragon : MonoBehaviour {
 
         if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("d"))
         {
+            if (footstepSource.isPlaying == false)
+            {
+                footstepSource.Play();
+            }
             dragonAnimator.SetBool("isWalkingBackwards", false);
             dragonAnimator.SetBool("isWalking", true);
             dragonAnimator.SetBool("isIdle", false);
@@ -160,7 +168,13 @@ public class PlayerControlledDragon : MonoBehaviour {
             dragonController.Move(moveDirection * Time.deltaTime);
         }
 
-        else if(Input.GetKey("s")){
+        else if(Input.GetKey("s"))
+        {
+            if (footstepSource.isPlaying == false)
+            {
+                footstepSource.Play();
+            }
+
             dragonAnimator.SetBool("isWalking", false);
             dragonAnimator.SetBool("isWalkingBackwards", true);
             dragonAnimator.SetBool("isIdle", false);
@@ -173,6 +187,7 @@ public class PlayerControlledDragon : MonoBehaviour {
         }
         else
         {
+            footstepSource.Stop();
             dragonAnimator.SetBool("isWalking", false);
             dragonAnimator.SetBool("isWalkingBackwards", false);
             dragonAnimator.SetBool("isIdle", true);
