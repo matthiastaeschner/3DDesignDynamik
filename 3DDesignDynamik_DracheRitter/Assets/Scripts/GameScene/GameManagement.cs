@@ -38,6 +38,7 @@ public class GameManagement : MonoBehaviour
     // Use this for initialization
     void Start ()
 	{
+        Cursor.lockState = CursorLockMode.Locked;
 		character = ApplicationModel.character;
 		if (Debug.isDebugBuild) {
 			Debug.Log ("Started game with " + character);

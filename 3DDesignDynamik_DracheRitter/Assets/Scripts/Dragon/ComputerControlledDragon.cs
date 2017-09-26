@@ -52,6 +52,8 @@ public class ComputerControlledDragon : MonoBehaviour {
         windSource.clip = wind;
         windSource.Play();
 
+        InvokeRepeating("Fire", 0.0f, 10.0f);
+
     }
 	
 	// Update is called once per frame
@@ -76,22 +78,25 @@ public class ComputerControlledDragon : MonoBehaviour {
                 footstepSource.Play();
             }
 			charControl.Move (directionToOpponentMove * Time.deltaTime);
-		} else {
-			anim.SetBool("isWalking", false);
-			anim.SetBool ("isIdle", true);
-
-            if(fireSource.isPlaying == false)
-            {
-                fireSource.Play();
-            }
-            
-			fireEffect = (GameObject) Instantiate(Resources.Load("Prefabs/FirePrefab")) as GameObject;
-			fireEffect.AddComponent<FireHit> ().OpponentPlayer = opponentPlayer;
-			fireEffect.GetComponent<FireHit> ().Dragon = gameObject;
-            fireEffect.transform.position = fireEmitter.transform.position;
-            fireEffect.transform.rotation = fireEmitter.transform.rotation;
-            Destroy(fireEffect, fireEffect.GetComponent<ParticleSystem>().main.duration);
+		} else
+        {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isIdle", true); 
         }
 
-	}
+    }
+
+    private void Fire()
+    {
+        if (fireSource.isPlaying == false)
+        {
+            fireSource.Play();
+        }
+        fireEffect = (GameObject)Instantiate(Resources.Load("Prefabs/FirePrefab")) as GameObject;
+        fireEffect.AddComponent<FireHit>().OpponentPlayer = opponentPlayer;
+        fireEffect.GetComponent<FireHit>().Dragon = gameObject;
+        fireEffect.transform.position = fireEmitter.transform.position;
+        fireEffect.transform.rotation = fireEmitter.transform.rotation;
+        Destroy(fireEffect, fireEffect.GetComponent<ParticleSystem>().main.duration);
+    }
 }
