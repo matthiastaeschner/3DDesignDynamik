@@ -171,6 +171,9 @@ public class GameManagement : MonoBehaviour
 
 	public void MakeDamage(GameObject character, int damageAmount)
 	{
+		if (Debug.isDebugBuild) {
+			Debug.Log ("MakeDamage to " + character + " / Opponent is " + opponent);
+		}
 		if (character == opponent) {
 			opponentsLifeBar.fillAmount -= damageAmount / 100f;
 		} else {
