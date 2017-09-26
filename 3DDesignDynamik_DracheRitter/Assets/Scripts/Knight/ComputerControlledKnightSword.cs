@@ -62,23 +62,27 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		audioWalk.loop = true;
 		audioWalk.volume = 0.3f;
 		audioWalk.pitch = 1.5f;
+		audioWalk.maxDistance = 50f;
 		audioGrunt = gameObject.AddComponent<AudioSource> ();
 		audioGrunt.playOnAwake = false;
 		grunt = (AudioClip)Resources.Load ("Sounds/Knight/KnightGrunt", typeof(AudioClip));
 		grunt.LoadAudioData ();
 		audioGrunt.clip = grunt;
 		audioGrunt.volume = 0.3f;
+		audioGrunt.maxDistance = 50f;
 		audioSwordSwing = gameObject.AddComponent<AudioSource> ();
 		audioSwordSwing.playOnAwake = false;
 		swordSwing = (AudioClip)Resources.Load ("Sounds/Knight/SwordSwing", typeof(AudioClip));
 		swordSwing.LoadAudioData ();
 		audioSwordSwing.clip = swordSwing;
 		audioSwordSwing.volume = 0.3f;
+		audioSwordSwing.maxDistance = 50f;
 		audioPain = gameObject.AddComponent<AudioSource> ();
 		audioPain.playOnAwake = false;
 		pain = (AudioClip)Resources.Load ("Sounds/Knight/KnightPain", typeof(AudioClip));
 		pain.LoadAudioData ();
 		audioPain.clip = pain;
+		audioPain.maxDistance = 50f;
 
 		sword = GameObject.Find ("Sword");
 		sword.AddComponent<SwordHit> ();
