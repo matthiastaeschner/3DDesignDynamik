@@ -57,15 +57,14 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		// audio sources with clips
 		audioWalk = gameObject.AddComponent<AudioSource> ();
         audioWalk.spatialBlend = 1.0f;
-        audioWalk.rolloffMode = AudioRolloffMode.Linear;
+        audioWalk.rolloffMode = AudioRolloffMode.Logarithmic;
+        audioWalk.maxDistance = 6f;
+        audioWalk.minDistance = 5f;
 		audioWalk.playOnAwake = false;
 		walkGravel = (AudioClip)Resources.Load ("Sounds/Knight/WalkingGravel", typeof(AudioClip));
 		walkGravel.LoadAudioData ();
 		audioWalk.clip = walkGravel;
 		audioWalk.loop = true;
-		audioWalk.volume = 0.3f;
-		audioWalk.pitch = 1.5f;
-		audioWalk.maxDistance = 50f;
 		audioGrunt = gameObject.AddComponent<AudioSource> ();
 		audioGrunt.playOnAwake = false;
 		grunt = (AudioClip)Resources.Load ("Sounds/Knight/KnightGrunt", typeof(AudioClip));
@@ -108,6 +107,7 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		Vector3 directionToOpponentMove = directionToOpponent.normalized * knightsRunningSpeed;
 		// keep the knight on the ground
 		directionToOpponentMove.y -= knightsGravity;
+        Debug.Log(directionToOpponent.magnitude);
 		if ((directionToOpponent.magnitude > 0.1f) && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Base Layer.Knight_Hit_Sword")) {
 			isWalking = true;
 			anim.Play ("Knight_Run_Sword");

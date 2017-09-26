@@ -39,9 +39,13 @@ public class ComputerControlledDragon : MonoBehaviour {
 
         footstepSource = gameObject.AddComponent<AudioSource>();
         footstepSource.spatialBlend = 1.0f;
-        footstepSource.rolloffMode = AudioRolloffMode.Linear;
+        footstepSource.rolloffMode = AudioRolloffMode.Logarithmic;
+        footstepSource.maxDistance = 5f;
+        footstepSource.minDistance = 4f;
         footstepSource.clip = footsteps;
         fireSource = gameObject.AddComponent<AudioSource>();
+        fireSource.spatialBlend = 1.0f;
+        fireSource.rolloffMode = AudioRolloffMode.Linear;
         fireSource.clip = fire;
         wingSource = gameObject.AddComponent<AudioSource>();
         wingSource.loop = true;
@@ -70,7 +74,7 @@ public class ComputerControlledDragon : MonoBehaviour {
 
 		directionToOpponentMove.y -= dragonGravity;
 
-		if (directionToOpponent.magnitude > 20f) {
+		if (directionToOpponent.magnitude > 22f) {
 			anim.SetBool ("isWalking", true);
 			anim.SetBool ("isIdle", false);
             if(footstepSource.isPlaying == false)
@@ -80,6 +84,7 @@ public class ComputerControlledDragon : MonoBehaviour {
 			charControl.Move (directionToOpponentMove * Time.deltaTime);
 		} else
         {
+            footstepSource.Stop();
             anim.SetBool("isWalking", false);
             anim.SetBool("isIdle", true); 
         }
