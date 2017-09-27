@@ -34,16 +34,18 @@ public class GameManagement : MonoBehaviour
 	public Image opponentsLifeBar;
 	public Button winOrLoseButton;
 	private GameObject opponent;
+	private bool gameOver = false;
 
-    // Use this for initialization
-    void Start ()
+	// Use this for initialization
+	void Start ()
 	{
-        Cursor.lockState = CursorLockMode.Locked;
+//		if (Debug.isDebugBuild) {
+//			Debug.Log ("Started game with " + character);
+//		}
+		// lock the cursor
+		Cursor.lockState = CursorLockMode.Locked;
+
 		character = ApplicationModel.character;
-		if (Debug.isDebugBuild) {
-			Debug.Log ("Started game with " + character);
-		}
-        
 		// add character-scripts and camera-objects depending on loaded player-character
 		if (character == ApplicationModel.PlayerCharacter.Knight) {
 			// switch cameras
@@ -64,8 +66,8 @@ public class GameManagement : MonoBehaviour
 			opponentsLifeText.text = "Drache";
 			opponent = dragon;
 		} else {
-            // switch cameras
-            dragonCameraHelper.SetActive(true);
+			// switch cameras
+			dragonCameraHelper.SetActive (true);
 			knightCameraHelper.SetActive (false);
 			// add character-scripts and define the oponent player
 			// dragon
@@ -127,38 +129,38 @@ public class GameManagement : MonoBehaviour
 					dragon.GetComponent<ComputerControlledDragon> ().OpponentPlayer = knightSword;
 				}
 			}
-
 		}
 
 		// for both players
 		// show or hide End-Button when hitting Escape
 		if (Input.GetButtonDown ("Cancel")) {
            
-            // Free the Cursor!
-            if(Cursor.lockState == CursorLockMode.Locked) {
-                Cursor.lockState = CursorLockMode.None;
-            } else {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-
-            if (endButton.IsActive()) {
-                endButton.gameObject.SetActive (false);
+			// Free the Cursor!
+			if (Cursor.lockState == CursorLockMode.Locked) {
+				Cursor.lockState = CursorLockMode.None;
 			} else {
-                endButton.gameObject.SetActive (true);
+				Cursor.lockState = CursorLockMode.Locked;
+			}
+
+			if (endButton.IsActive ()) {
+				endButton.gameObject.SetActive (false);
+			} else {
+				endButton.gameObject.SetActive (true);
 			}
 		}
 
 		// check life bars
 		if (opponentsLifeBar.fillAmount == 0 || playersLifeBar.fillAmount == 0) {
+			gameOver = true;
 			EndGameWinOrLose (character);
 		}
 	}
 
-	private void EndGameWinOrLose(ApplicationModel.PlayerCharacter character)
+	private void EndGameWinOrLose (ApplicationModel.PlayerCharacter character)
 	{
-        Cursor.lockState = CursorLockMode.None;
-        // Game is over, remove controls
-        if (character == ApplicationModel.PlayerCharacter.Knight) {
+		Cursor.lockState = CursorLockMode.None;
+		// Game is over, remove controls
+		if (character == ApplicationModel.PlayerCharacter.Knight) {
 			Destroy (knightSword.GetComponent<PlayerControlledKnightSword> ());
 			Destroy (knightBow.GetComponent<PlayerControlledKnightBow> ());
 			Destroy (dragon.GetComponent<ComputerControlledDragon> ());
@@ -175,25 +177,28 @@ public class GameManagement : MonoBehaviour
 
 	}
 
-	public void MakeDamage(GameObject character, int damageAmount)
+	public void MakeDamage (GameObject character, int damageAmount)
 	{
-		if (Debug.isDebugBuild) {
-			Debug.Log ("MakeDamage to " + character + " / Opponent is " + opponent);
-		}
+//		if (Debug.isDebugBuild) {
+//			Debug.Log ("MakeDamage to " + character + " / Opponent is " + opponent);
+//		}
 		if (character == opponent) {
 			opponentsLifeBar.fillAmount -= damageAmount / 100f;
 		} else {
 			playersLifeBar.fillAmount -= damageAmount / 100f;
 		}
 		// play pain sound
-		if (character == knightSword && opponent == dragon) {
-			knightSword.GetComponent<PlayerControlledKnightSword> ().PlayPainAudio ();
+		if (character == knightSword && opponent == dragon && !gameOver) {
+			character.GetComponent<PlayerControlledKnightSword> ().PlayPainAudio ();
+			
 		}
-		if (character == knightBow && opponent == dragon) {
-			knightSword.GetComponent<PlayerControlledKnightBow> ().PlayPainAudio ();
+		if (character == knightBow && opponent == dragon && !gameOver) {
+			character.GetComponent<PlayerControlledKnightBow> ().PlayPainAudio ();
+
 		}
-		if (character == knightSword && opponent == knightSword) {
-			knightSword.GetComponent<ComputerControlledKnightSword> ().PlayPainAudio ();
+		if (character == knightSword && opponent == knightSword && !gameOver) {
+			character.GetComponent<ComputerControlledKnightSword> ().PlayPainAudio ();
+			
 		}
 	}
 

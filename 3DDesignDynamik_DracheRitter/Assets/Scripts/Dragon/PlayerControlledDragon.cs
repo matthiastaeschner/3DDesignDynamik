@@ -62,29 +62,24 @@ public class PlayerControlledDragon : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (Cursor.lockState == CursorLockMode.Locked) {
+			if (dragonController.isGrounded) {
+				Quaternion tempRot = Quaternion.Euler (new Vector3 (initialRotation.x, gameObject.transform.rotation.eulerAngles.y, initialRotation.z));
+				gameObject.transform.rotation = Quaternion.Slerp (gameObject.transform.rotation, tempRot, 5f * Time.deltaTime);
+				moveGroundedDragon ();
 
-        if (dragonController.isGrounded)
-         {
-			Quaternion tempRot = Quaternion.Euler (new Vector3(initialRotation.x, gameObject.transform.rotation.eulerAngles.y, initialRotation.z));
-			gameObject.transform.rotation = Quaternion.Slerp (gameObject.transform.rotation, tempRot, 5f * Time.deltaTime);
-            moveGroundedDragon();
+			} else if (!dragonController.isGrounded && dragonAnimator.GetBool ("isFlying") == true) {
+				footstepSource.Stop ();
+				moveFlyingDragon ();
+			} else {
+				moveDirection.y = -dragonJumpSpeed;
+				dragonController.Move (moveDirection * Time.deltaTime); 
+			}
 
-        } else if(!dragonController.isGrounded && dragonAnimator.GetBool("isFlying") == true)
-        {
-            footstepSource.Stop();
-            moveFlyingDragon();
-        }
-        else
-        {
-            moveDirection.y = -dragonJumpSpeed;
-            dragonController.Move(moveDirection * Time.deltaTime); 
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Fire();
-        }
-
+			if (Input.GetMouseButtonDown (0)) {
+				Fire ();
+			}
+		}
     }
 
     private void Fire()

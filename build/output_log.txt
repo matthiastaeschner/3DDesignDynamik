@@ -1,2 +1,0 @@
-There should be '3dd_Data'
-folder next to the executable

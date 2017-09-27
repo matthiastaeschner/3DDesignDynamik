@@ -19,7 +19,7 @@ public class ComputerControlledKnightSword : MonoBehaviour
 	}
 
 	private float knightsRunningSpeed = 15.0f;
-	private float knightsRotationSpeed = 60.0f;
+	private float knightsRotationSpeed = 40.0f;
 	private float knightsGravity = 50.0f;
 	private bool isWalking = false;
 	private bool isWalkingAudio = false;
@@ -70,7 +70,7 @@ public class ComputerControlledKnightSword : MonoBehaviour
 		grunt = (AudioClip)Resources.Load ("Sounds/Knight/KnightGrunt", typeof(AudioClip));
 		grunt.LoadAudioData ();
 		audioGrunt.clip = grunt;
-		audioGrunt.volume = 0.3f;
+		audioGrunt.volume = 0.1f;
 		audioGrunt.maxDistance = 50f;
 		audioSwordSwing = gameObject.AddComponent<AudioSource> ();
 		audioSwordSwing.playOnAwake = false;
@@ -95,40 +95,43 @@ public class ComputerControlledKnightSword : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		// get the direction to opponent on ground
-		Vector3 directionToOpponent = opponentPlayer.transform.position - transform.position;
-		directionToOpponent.y = 0f;
+		if (Cursor.lockState == CursorLockMode.Locked) {
+			// get the direction to opponent on ground
+			Vector3 directionToOpponent = opponentPlayer.transform.position - transform.position;
+			directionToOpponent.y = 0f;
 
-		// rotate towards opponent
-		Quaternion lookRotation = Quaternion.LookRotation(directionToOpponent.normalized);
-		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * knightsRotationSpeed);
+			// rotate towards opponent
+			Quaternion lookRotation = Quaternion.LookRotation (directionToOpponent.normalized);
+			transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, Time.deltaTime * knightsRotationSpeed);
 
-		// move to opponent if too far away but dont interrupt sword swinging
-		Vector3 directionToOpponentMove = directionToOpponent.normalized * knightsRunningSpeed;
-		// keep the knight on the ground
-		directionToOpponentMove.y -= knightsGravity;
-        Debug.Log(directionToOpponent.magnitude);
-		if ((directionToOpponent.magnitude > 0.1f) && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Base Layer.Knight_Hit_Sword")) {
-			isWalking = true;
-			anim.Play ("Knight_Run_Sword");
-			charControl.Move (directionToOpponentMove * Time.deltaTime);
-		} 
-		if (isWalking && !isWalkingAudio) {
-			audioWalk.Play ();
-			isWalkingAudio = true;
+			// move to opponent if too far away but dont interrupt sword swinging
+			Vector3 directionToOpponentMove = directionToOpponent.normalized * knightsRunningSpeed;
+			// keep the knight on the ground
+			directionToOpponentMove.y -= knightsGravity;
+			if ((directionToOpponent.magnitude > 0.1f) && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Base Layer.Knight_Hit_Sword")) {
+				isWalking = true;
+				anim.Play ("Knight_Run_Sword");
+				charControl.Move (directionToOpponentMove * Time.deltaTime);
+			} 
+			if (isWalking && !isWalkingAudio) {
+				audioWalk.Play ();
+				isWalkingAudio = true;
+			}
 		}
 	}
 
 	public void OnControllerColliderHit(ControllerColliderHit hit) 
 	{
-		// if the character collides with dragon while moving
-		if (hit.gameObject == opponentPlayer) {
-			anim.Play ("Knight_Hit_Sword");
-			audioWalk.Pause ();
-			isWalking = false;
-			isWalkingAudio = false;
-			audioSwordSwing.Play ();
-			audioGrunt.Play ();
+		if (Cursor.lockState == CursorLockMode.Locked) {
+			// if the character collides with dragon while moving
+			if (hit.gameObject == opponentPlayer) {
+				anim.Play ("Knight_Hit_Sword");
+				audioWalk.Pause ();
+				isWalking = false;
+				isWalkingAudio = false;
+				audioSwordSwing.Play ();
+				audioGrunt.Play ();
+			}
 		}
 	}
 }
