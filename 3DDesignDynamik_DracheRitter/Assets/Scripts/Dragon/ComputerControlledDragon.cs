@@ -75,7 +75,7 @@ public class ComputerControlledDragon : MonoBehaviour {
 
 			directionToOpponentMove.y -= dragonGravity;
 
-			if (directionToOpponent.magnitude > 10f) {
+			if (directionToOpponent.magnitude > 30f) {
 				anim.SetBool ("isWalking", true);
 				anim.SetBool ("isIdle", false);
 				if (footstepSource.isPlaying == false) {
@@ -100,7 +100,7 @@ public class ComputerControlledDragon : MonoBehaviour {
 			fireEffect.AddComponent<FireHit> ().OpponentPlayer = opponentPlayer;
 			fireEffect.GetComponent<FireHit> ().Dragon = gameObject;
 			fireEffect.transform.position = fireEmitter.transform.position;
-			fireEffect.transform.rotation = fireEmitter.transform.rotation;
+			fireEffect.transform.rotation = transform.rotation;
 			Destroy (fireEffect, fireEffect.GetComponent<ParticleSystem> ().main.duration);
 		}
     }

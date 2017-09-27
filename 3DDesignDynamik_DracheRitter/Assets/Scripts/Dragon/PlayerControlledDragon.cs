@@ -77,12 +77,17 @@ public class PlayerControlledDragon : MonoBehaviour {
 			}
 
 			if (Input.GetMouseButtonDown (0)) {
-				Fire ();
+				GameObject fireEffect = Fire ();
 			}
+
+            if(fireEffect != null)
+            {
+                fireEffect.transform.position = fireEmitter.transform.position;
+            }
 		}
     }
 
-    private void Fire()
+    private GameObject Fire()
     {
         fireSource.Play();
         
@@ -92,6 +97,7 @@ public class PlayerControlledDragon : MonoBehaviour {
         fireEffect.transform.position = fireEmitter.transform.position;
         fireEffect.transform.rotation = fireEmitter.transform.rotation;
         Destroy(fireEffect, fireEffect.GetComponent<ParticleSystem>().main.duration);
+        return fireEffect;
     }
 
     private void moveFlyingDragon()
